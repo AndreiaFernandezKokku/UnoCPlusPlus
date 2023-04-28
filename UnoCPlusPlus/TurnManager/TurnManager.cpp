@@ -20,7 +20,6 @@ void TurnManager::SetupForFirstTurn()
 			player.GetCurrentCards(), 7);
 		player.PrintCurrentCards();
 	}
-	cardsManager->PrintDeckAmountOfCards();
 }
 
 void TurnManager::StartTurns()
