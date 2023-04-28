@@ -7,7 +7,7 @@ class RandomUtility
 {
 public:
 	static int RandRange(int lowerBound, int upperBound);
-	/*
+	
 	template <class T>
 	static void ShuffleVector(T::iterator vectorBegin,
 		T::iterator vectorEnd)
@@ -15,5 +15,4 @@ public:
 		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 		std::shuffle(vectorBegin, vectorEnd, std::default_random_engine(seed));
 	}
-	*/
 };

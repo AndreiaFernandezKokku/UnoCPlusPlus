@@ -1,14 +1,32 @@
 #include <iostream>
+#include "Cards/Importer/Importer.h"
+#include "Cards/Card.h"
+#include "Cards/Color.h"
+#include "Cards/CardAction.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
-    /*
-    InputVariablesManager input = InputVariablesManager{};
-    auto name = input.GetStringInput("Say my name", 2, 10);
-    std::cout << name;
-    */
-    //auto i = static_cast<int>(Color::Red);
-    //std::cout << enum_to_string[i] << std::endl;
+    Importer importer = Importer{};
+    std::vector<Card> AllCards = importer.GetAllCards();
+    std::cout << "AllCardsCount " << AllCards.size() << std::endl;
+
+    std::vector<Card> someCards = std::vector<Card>{};
+    //someCards.push_back(std::move(AllCards[0]));
+    someCards.insert(someCards.end(), 
+        std::make_move_iterator(AllCards.begin()),
+        std::make_move_iterator(AllCards.begin() + 7));
+
+    AllCards.erase(AllCards.begin(), AllCards.begin() + 7);
+
+    std::cout << "AllCardsCount " << AllCards.size() << std::endl;
+    std::cout << "someCards count " << someCards.size() << std::endl;
+    printf("All cards 0 color %s and action %s\n", 
+        ColorToString[static_cast<int>(AllCards[0].color)],
+        CardActionToString[static_cast<int>(AllCards[0].action)]);
+
+    printf("Some Cards cards 0 color %s and action %s\n",
+    ColorToString[static_cast<int>(someCards[0].color)],
+    CardActionToString[static_cast<int>(someCards[0].action)]);
 }
 

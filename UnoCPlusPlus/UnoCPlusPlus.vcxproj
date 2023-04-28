@@ -127,7 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cards\Importer\Importer.cpp" />
     <ClCompile Include="UnoCPlusPlus.cpp" />
+    <ClCompile Include="Utilities\Cpp\InputVariablesManager.cpp" />
+    <ClCompile Include="Utilities\Cpp\RandomNameGenerator.cpp" />
+    <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cards\Card.h" />
+    <ClInclude Include="Cards\CardAction.h" />
+    <ClInclude Include="Cards\Color.h" />
+    <ClInclude Include="Cards\Importer\Importer.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Utilities\Header\FloatComparer.h" />
+    <ClInclude Include="Utilities\Header\InputVariablesManager.h" />
+    <ClInclude Include="Utilities\Header\RandomNameGenerator.h" />
+    <ClInclude Include="Utilities\Header\RandomUtility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
