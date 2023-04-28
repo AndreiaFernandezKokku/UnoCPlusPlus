@@ -1,18 +1,18 @@
 #include <iostream>
-#include "Cards/Importer/Importer.h"
-#include "Cards/Card.h"
-#include "Cards/Color.h"
-#include "Cards/CardAction.h"
+#include "TurnManager/TurnManager.h"
 
 int main()
 {
+    TurnManager turnManager = TurnManager{};
+    turnManager.SetupForFirstTurn();
+    /*
     std::cout << "Hello World!\n";
     Importer importer = Importer{};
     std::vector<Card> AllCards = importer.GetAllCards();
     std::cout << "AllCardsCount " << AllCards.size() << std::endl;
 
     std::vector<Card> someCards = std::vector<Card>{};
-    //someCards.push_back(std::move(AllCards[0]));
+
     someCards.insert(someCards.end(), 
         std::make_move_iterator(AllCards.begin()),
         std::make_move_iterator(AllCards.begin() + 7));
@@ -28,5 +28,6 @@ int main()
     printf("Some Cards cards 0 color %s and action %s\n",
     ColorToString[static_cast<int>(someCards[0].color)],
     CardActionToString[static_cast<int>(someCards[0].action)]);
+    */
 }
 

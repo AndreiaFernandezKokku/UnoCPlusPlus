@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,18 +128,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cards\Manager\CardsManager.cpp" />
     <ClCompile Include="Cards\Importer\Importer.cpp" />
+    <ClCompile Include="Player\Manager\PlayersManager.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="TurnManager\TurnManager.cpp" />
     <ClCompile Include="UnoCPlusPlus.cpp" />
     <ClCompile Include="Utilities\Cpp\InputVariablesManager.cpp" />
     <ClCompile Include="Utilities\Cpp\RandomNameGenerator.cpp" />
     <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cards\Manager\CardsManager.h" />
     <ClInclude Include="Cards\Card.h" />
     <ClInclude Include="Cards\CardAction.h" />
     <ClInclude Include="Cards\Color.h" />
     <ClInclude Include="Cards\Importer\Importer.h" />
+    <ClInclude Include="Player\Manager\PlayersManager.h" />
     <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="TurnManager\TurnManager.h" />
     <ClInclude Include="Utilities\Header\FloatComparer.h" />
     <ClInclude Include="Utilities\Header\InputVariablesManager.h" />
     <ClInclude Include="Utilities\Header\RandomNameGenerator.h" />
