@@ -17,14 +17,32 @@ void TurnManager::SetupForFirstTurn()
 	for (Player& player : playersManager->AllPlayers)
 	{
 		cardsManager->PlaceAmountOfCardsFromDeckInVector(
-			player.GetCurrentCards(), 7);
+			player.GetCurrentCards(), INITIAL_CARDS);
 		player.PrintCurrentCards();
 	}
 }
 
+bool TurnManager::IsThereAnyPlayerWithZeroCards()
+{
+	for (Player& player : playersManager->AllPlayers)
+	{
+		if (player.GetCurrentCardsSize() <= 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 void TurnManager::StartTurns()
 {
+	while (!IsThereAnyPlayerWithZeroCards())
+	{
+		//todo get last card
+		//check rules
+		//send rules for player to start turn
 
+	}
 }
 
 

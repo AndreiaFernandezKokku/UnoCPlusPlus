@@ -42,6 +42,9 @@
     <ClCompile Include="Cards\Manager\CardsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RulesManager\RulesManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\Importer\Importer.h">
@@ -78,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cards\Manager\CardsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnAction\TurnAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

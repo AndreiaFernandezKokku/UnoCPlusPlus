@@ -11,6 +11,7 @@ RandomNameGenerator::RandomNameGenerator()
 
 const std::string& RandomNameGenerator::CompleteRandomName()
 {
+	//todo remove used name
 	int index = RandomUtility::RandRange(0, allNames.size() - 1);
 	return allNames[index];
 }

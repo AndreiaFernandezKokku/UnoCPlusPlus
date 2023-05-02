@@ -1,7 +1,8 @@
 #include "Player.h"
 
-void Player::StartTurn()
+std::optional<Card> Player::StartTurn()
 {
+    return std::optional<Card>();
 }
 
 const char* Player::GetName()
@@ -12,6 +13,11 @@ const char* Player::GetName()
 std::vector<Card>& Player::GetCurrentCards()
 {
     return currentCards;
+}
+
+const int Player::GetCurrentCardsSize()
+{
+    return currentCards.size();
 }
 
 void Player::PrintCurrentCards()

@@ -6,8 +6,11 @@
 
 class TurnManager
 {
+	const int INITIAL_CARDS = 7;
 	std::unique_ptr<PlayersManager> playersManager;
 	std::unique_ptr<CardsManager> cardsManager;
+	
+	bool IsThereAnyPlayerWithZeroCards();
 
 public:
 	TurnManager();
