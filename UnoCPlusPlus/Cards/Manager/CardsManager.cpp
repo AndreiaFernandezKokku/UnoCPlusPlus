@@ -82,16 +82,9 @@ void CardsManager::SendCardsFromTableToDeck()
 	ShuffleDeckList();
 }
 
-void CardsManager::PlaceCardOnTable(std::optional<Card> cardToPlaceOnTable)
+void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
 {
-	if (cardToPlaceOnTable.has_value())
-	{
-		table.push_back(cardToPlaceOnTable.value());
-	}
-	else
-	{
-		printf("No card to place on table \n");
-	}
+	table.push_back(cardToPlaceOnTable);
 }
 
 

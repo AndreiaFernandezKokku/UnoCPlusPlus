@@ -24,7 +24,7 @@ public:
 	// /here we move
 	// here we copy
 	const std::optional<Card> GetLastCardFromTable();
-	void PlaceCardOnTable(std::optional<Card> cardToPlaceOnTable);
+	void PlaceCardOnTable(Card cardToPlaceOnTable);
 	// /here we copy
 	void PrintDeckAmountOfCards();
 };

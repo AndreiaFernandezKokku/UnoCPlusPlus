@@ -1,14 +1,11 @@
 #include "RulesManager.h"
 
-void RulesManager::UpdateValidActions(std::optional<Card> currentTableCard)
+void RulesManager::NewCardOnTable(std::optional<Card> currentTableCard)
 {
 	colorsThatCanBePlayed.clear();
 	cardActThatCanBePlayed.clear();
 	actionsToTake.clear();
 
-
-	//todo add stacked cards
-	//Todo add actions for turn
 	if (!currentTableCard.has_value())
 	{
 		AddAllActionsAndColors();
@@ -18,8 +15,20 @@ void RulesManager::UpdateValidActions(std::optional<Card> currentTableCard)
 
 	UpdateActionsBasedOnCardActions(currentTableCard.value());
 
-
+	if (std::find(actionsToTake.begin(),
+		actionsToTake.end(),
+		TurnAction::CanPlayCard) != actionsToTake.end())
+	{
+		UpdateCurrentCardsThatCanBePlayed(currentTableCard.value());
+	}
 }
+
+void RulesManager::NoNewCardOnTable()
+{
+	actionsToTake.clear();
+	actionsToTake.push_back(TurnAction::CanPlayCard);
+}
+
 
 void RulesManager::UpdateActionsBasedOnCardActions(const Card& currentTableCard)
 {
@@ -77,6 +86,11 @@ void RulesManager::AddAllActionsAndColors()
 	{
 		cardActThatCanBePlayed.push_back(CardAction(i));
 	}
+}
+
+std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
+{
+	return actionsToTake;
 }
 
 bool RulesManager::CanCardBePlayed(const Card& card)

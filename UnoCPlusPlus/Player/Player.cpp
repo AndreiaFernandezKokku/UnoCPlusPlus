@@ -1,6 +1,6 @@
 #include "Player.h"
 
-std::optional<Card> Player::StartTurn()
+std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
 {
     return std::optional<Card>();
 }
