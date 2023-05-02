@@ -22,6 +22,11 @@ TurnManager::TurnManager()
 	{
 		cardsManager->PlaceOneCardFromDeckInVector(vectorToPlace);
 	};
+
+	NumberOfCardsToBeBought = [&] ()
+	{
+		return rulesManager.GetNumberOfCardsToBeBought();
+	};
 }
 
 void TurnManager::SetupForFirstTurn()

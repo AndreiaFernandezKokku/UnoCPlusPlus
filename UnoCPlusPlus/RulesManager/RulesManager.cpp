@@ -9,24 +9,19 @@ void RulesManager::NewCardOnTable(std::optional<Card> currentTableCard)
 	if (!currentTableCard.has_value())
 	{
 		AddAllActionsAndColors();
-		numberOfCardsThatStacked = 0;
+
 		return;
 	}
 
 	UpdateActionsBasedOnCardActions(currentTableCard.value());
-
-	if (std::find(actionsToTake.begin(),
-		actionsToTake.end(),
-		TurnAction::CanPlayCard) != actionsToTake.end())
-	{
-		UpdateCurrentCardsThatCanBePlayed(currentTableCard.value());
-	}
+	UpdateCurrentCardsThatCanBePlayed(currentTableCard.value());
 }
 
 void RulesManager::NoNewCardOnTable()
 {
 	actionsToTake.clear();
 	actionsToTake.push_back(TurnAction::CanPlayCard);
+	numberOfCardsThatStacked = 0;
 }
 
 
@@ -88,29 +83,34 @@ void RulesManager::AddAllActionsAndColors()
 	}
 }
 
-std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
+const std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
 {
 	return actionsToTake;
 }
 
 bool RulesManager::CanCardBePlayed(const Card& card)
 {
-	if (HasPlayableColor(card))
+	if (HasPlayableColor(card.color))
 	{
 		return true;
 	}
-	if (HasPlayableAction(card))
+	if (HasPlayableAction(card.action))
 	{
 		return true;
 	}
 	return false;
 }
 
-bool RulesManager::HasPlayableColor(const Card& card)
+int RulesManager::GetNumberOfCardsToBeBought()
+{
+	return numberOfCardsThatStacked;
+}
+
+bool RulesManager::HasPlayableColor(const Color& color)
 {
 	if (std::find(colorsThatCanBePlayed.begin(), 
 		colorsThatCanBePlayed.end(), 
-		card.color) != colorsThatCanBePlayed.end())
+		color) != colorsThatCanBePlayed.end())
 	{
 		return true;
 	}
@@ -120,11 +120,11 @@ bool RulesManager::HasPlayableColor(const Card& card)
 	}
 }
 
-bool RulesManager::HasPlayableAction(const Card& card)
+bool RulesManager::HasPlayableAction(const CardAction& action)
 {
 	if (std::find(cardActThatCanBePlayed.begin(),
 		cardActThatCanBePlayed.end(), 
-		card.action) != cardActThatCanBePlayed.end())
+		action) != cardActThatCanBePlayed.end())
 	{
 		return true;
 	}

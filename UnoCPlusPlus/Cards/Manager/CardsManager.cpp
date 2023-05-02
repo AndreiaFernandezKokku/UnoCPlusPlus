@@ -72,6 +72,7 @@ bool CardsManager::DoesTableHaveEnoughCardsToSendToDeck(int amountToSend)
 
 void CardsManager::SendCardsFromTableToDeck()
 {
+	printf("Sending cards from table to deck. \n");
 	int vectorEndPlusMinTableCards = -1 - MIN_TABLE_CARDS;
 	deck.insert(deck.end(),
 		std::make_move_iterator(table.begin()),

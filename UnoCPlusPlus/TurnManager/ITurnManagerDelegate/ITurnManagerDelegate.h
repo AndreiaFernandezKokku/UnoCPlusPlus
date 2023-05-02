@@ -10,4 +10,5 @@ public:
 		int amount)> PlaceAmountOfDeckCardsInVector = 0;
 	std::function<void(std::vector<Card>& vectorToPlace)>
 		PlaceOneDeckCardInVector = 0;
+	std::function<int()> NumberOfCardsToBeBought = 0;
 };
