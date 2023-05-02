@@ -47,7 +47,7 @@ void PlayersManager::SetNamesRandomGenerator(int numberOfPlayers)
 		std::shared_ptr<std::string> name = std::make_shared<std::string>
 			(nameGenerator.CompleteRandomName());
 
-		printf("name is %s", name->c_str());
+		printf("name is %s \n", name->c_str());
 		AllPlayers.push_back(Player(name));
 	}
 }
