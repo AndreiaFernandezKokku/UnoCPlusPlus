@@ -61,7 +61,7 @@ bool TurnManager::IsThereAnyPlayerWithZeroCards()
 
 void TurnManager::StartTurns()
 {
-	rulesManager.NewCardOnTable(cardsManager->GetLastCardFromTable());
+	rulesManager.FirstTurn();
 	int playerIndex = -1;
 	while (!IsThereAnyPlayerWithZeroCards())
 	{

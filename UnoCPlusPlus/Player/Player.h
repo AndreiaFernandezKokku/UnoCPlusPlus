@@ -16,8 +16,9 @@ private:
 	std::vector<std::unique_ptr<IPlayerActionsThatCanBeTaken>> possibleActions;
 
 	bool CanPlay(std::vector<TurnAction> turnAction);
-	void ShowAvailableActions(std::vector<TurnAction> turnAction);
-	bool CanPlayCard(std::vector<TurnAction> turnAction); //Maybe remove.
+	void ShowPlaceCardAction();
+	void ShowObligationToBuyCard();
+	void ShowBuyCardIfNoOwnedCardsIsValid();
 	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
 	void PrintAction(int actionNumber);
 	void PrintCard(const Card& cardToPrint);

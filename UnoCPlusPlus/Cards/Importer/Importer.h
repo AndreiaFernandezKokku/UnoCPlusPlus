@@ -4,8 +4,9 @@
 
 class Importer
 {
+	//todo
 	//Temporary implementation.
-	//Final implementation must open a file and read it.
+	//Final implementation should open a file and read it.
 public:
 	std::vector<Card> GetAllCards();
 };

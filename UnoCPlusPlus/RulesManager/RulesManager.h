@@ -15,14 +15,15 @@ private:
 	std::vector<TurnAction> actionsToTake;
 
 	void UpdateActionsBasedOnCardActions(const Card& currentTableCard);
-	void UpdateCurrentCardsThatCanBePlayed(const Card& currentTableCard);
+	void UpdateCurrentColorThatCanBePlayed(const Card& currentTableCard);
 	void AddAllColors();
 	void AddAllActionsAndColors();
 	bool HasPlayableColor(const Color& color);
 	bool HasPlayableAction(const CardAction& action);
 public:
 	//todo separate for turn manager actions
-	void NewCardOnTable(std::optional<Card> currentTableCard);
+	void FirstTurn();
+	void NewCardOnTable(Card currentTableCard);
 	void NoNewCardOnTable();
 	//todo serparate for player actions
 	const std::vector<TurnAction> GetCurrentTurnActionsAvailable();

@@ -1,29 +1,24 @@
 #include "RulesManager.h"
 
-void RulesManager::NewCardOnTable(std::optional<Card> currentTableCard)
+void RulesManager::FirstTurn()
+{
+	AddAllActionsAndColors();
+}
+
+void RulesManager::NewCardOnTable(Card currentTableCard)
 {
 	colorsThatCanBePlayed.clear();
 	cardActThatCanBePlayed.clear();
 	actionsToTake.clear();
 
-	if (!currentTableCard.has_value())
-	{
-		AddAllActionsAndColors();
-
-		return;
-	}
-
-	UpdateActionsBasedOnCardActions(currentTableCard.value());
-	UpdateCurrentCardsThatCanBePlayed(currentTableCard.value());
+	UpdateActionsBasedOnCardActions(currentTableCard);
 }
 
 void RulesManager::NoNewCardOnTable()
 {
 	actionsToTake.clear();
-	actionsToTake.push_back(TurnAction::CanPlayCard);
 	numberOfCardsThatStacked = 0;
 }
-
 
 void RulesManager::UpdateActionsBasedOnCardActions(const Card& currentTableCard)
 {
@@ -31,29 +26,34 @@ void RulesManager::UpdateActionsBasedOnCardActions(const Card& currentTableCard)
 	{
 		case CardAction::Reverse:
 		{
+			cardActThatCanBePlayed.push_back(currentTableCard.action);
+			UpdateCurrentColorThatCanBePlayed(currentTableCard);
 			actionsToTake.push_back(TurnAction::Reverse);
 			return;
 		}
 		case CardAction::Jump:
 		{
+			cardActThatCanBePlayed.push_back(currentTableCard.action);
+			UpdateCurrentColorThatCanBePlayed(currentTableCard);
 			actionsToTake.push_back(TurnAction::Jumped);
 			return;
 		}
 		case CardAction::PlusTwo:
 		{
+			cardActThatCanBePlayed.push_back(currentTableCard.action);
 			actionsToTake.push_back(TurnAction::BuyMultipleCard);
 			numberOfCardsThatStacked += 2;
-			[[fallthrough]];
+			return;
 		}
 		default: 
 		{
-			actionsToTake.push_back(TurnAction::CanPlayCard);
+			UpdateCurrentColorThatCanBePlayed(currentTableCard);
 			return;
 		}
 	}
 }
 
-void RulesManager::UpdateCurrentCardsThatCanBePlayed(const Card& currentTableCard)
+void RulesManager::UpdateCurrentColorThatCanBePlayed(const Card& currentTableCard)
 {
 	if (currentTableCard.color == Color::Any)
 	{
@@ -63,7 +63,6 @@ void RulesManager::UpdateCurrentCardsThatCanBePlayed(const Card& currentTableCar
 	{
 		colorsThatCanBePlayed.push_back(currentTableCard.color);
 	}
-	cardActThatCanBePlayed.push_back(currentTableCard.action);
 }
 
 void RulesManager::AddAllColors()
