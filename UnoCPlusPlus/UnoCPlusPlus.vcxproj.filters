@@ -45,6 +45,12 @@
     <ClCompile Include="RulesManager\RulesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player\ActionsThatCanBeTaken\BuyCard\BuyCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\Importer\Importer.h">
@@ -87,6 +93,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RulesManager\TurnAction\TurnAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnManager\ITurnManagerDelegate\ITurnManagerDelegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ActionsThatCanBeTaken\IPlayerActionsThatCanBeTaken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ActionsThatCanBeTaken\BuyCard\BuyCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

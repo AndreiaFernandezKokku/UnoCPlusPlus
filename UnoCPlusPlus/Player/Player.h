@@ -5,6 +5,7 @@
 #include <optional>
 #include "../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 #include "../RulesManager/TurnAction/TurnAction.h"
+#include "ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
 
 class Player
 {
@@ -12,11 +13,23 @@ class Player
 private:
 	std::vector<Card> currentCards;
 	std::shared_ptr<std::string> name;
+	std::vector<std::unique_ptr<IPlayerActionsThatCanBeTaken>> possibleActions;
+
+	bool CanPlay(std::vector<TurnAction> turnAction);
+	void ShowAvailableActions(std::vector<TurnAction> turnAction);
+	bool CanPlayCard(std::vector<TurnAction> turnAction); //Maybe remove.
+	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
+	void PrintAction(int actionNumber);
+	void PrintCard(const Card& cardToPrint);
+	const int SelectActionToTake();
+
 public:
 	ITurnManagerDelegate* del = NULL;
+
 	Player(std::shared_ptr<std::string> nam) :
 		name{ nam }
 	{};
+
 	std::optional<Card> StartTurn(std::vector<TurnAction> turnAction);
 	const char* GetName();
 	std::vector<Card>& GetCurrentCards();

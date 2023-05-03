@@ -5,6 +5,7 @@ int main()
 {
     TurnManager turnManager = TurnManager{};
     turnManager.SetupForFirstTurn();
+    turnManager.StartTurns();
     /*
     std::cout << "Hello World!\n";
     Importer importer = Importer{};
