@@ -4,25 +4,26 @@
 #include <optional>
 #include "../Cards/Card.h"
 #include "TurnAction/TurnAction.h"
+#include "TurnActionSelector/DefaultTurnAction/FirstTurnAction/FirstTurnAction.h"
+#include "TurnActionSelector/DefaultTurnAction/DefaultTurnAction.h"
+#include "TurnActionSelector/DefaultTurnAction/JumpTurnAction/JumpTurnAction.h"
+#include "TurnActionSelector/DefaultTurnAction/ReverseTurnAction/ReverseTurnAction.h"
+#include "TurnActionSelector/DefaultTurnAction/PlusTwoCardsAction/PlusTwoCardsAction.h"
 
 class RulesManager
 {
 	//todo add uno rules
 private:
-	std::vector<Color> colorsThatCanBePlayed;
-	std::vector<CardAction> cardActThatCanBePlayed;
 	int numberOfCardsThatStacked;
-	std::vector<TurnAction> actionsToTake;
+	std::vector<std::unique_ptr<IRulesState>> turnActions;
+	int currentState = 0;
 
 	void UpdateActionsBasedOnCardActions(const Card& currentTableCard);
-	void UpdateCurrentColorThatCanBePlayed(const Card& currentTableCard);
-	void AddAllColors();
-	void AddAllActionsAndColors();
-	bool HasPlayableColor(const Color& color);
-	bool HasPlayableAction(const CardAction& action);
+
 public:
+	RulesManager();
 	//todo separate for turn manager actions
-	void FirstTurn();
+
 	void NewCardOnTable(Card currentTableCard);
 	void NoNewCardOnTable();
 	//todo serparate for player actions
