@@ -9,6 +9,8 @@ RulesManager::RulesManager()
 	turnStates.emplace_back(std::make_unique<ReverseTurnState>());
 	turnStates.emplace_back(
 		std::make_unique<PlusTwoCardsState>(&numberOfCardsThatStacked));
+	turnStates.emplace_back(
+		std::make_unique<PlusFourCardsState>(&numberOfCardsThatStacked));
 	currentState = 0;
 }
 
@@ -17,7 +19,7 @@ void RulesManager::NewCardOnTable(Card currentTableCard)
 	UpdateState(currentTableCard.action);
 	turnStates[currentState]->NewCardOnTable(currentTableCard);
 
-	if (currentState != 4)
+	if (currentState != 4 && currentState != 5)
 	{
 		assert(numberOfCardsThatStacked == 0,
 			"You can only have stacked cards on states that this is permitted.");
@@ -46,6 +48,11 @@ void RulesManager::UpdateState(const CardAction& currentCardAction)
 		case CardAction::PlusTwo:
 		{
 			currentState = 4;
+			return;
+		}
+		case CardAction::PlusFour:
+		{
+			currentState = 5;
 			return;
 		}
 		default: 

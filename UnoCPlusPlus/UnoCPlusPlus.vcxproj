@@ -131,7 +131,7 @@
     <ClCompile Include="Player\PlayerStates\MustBuyState\MustBuyState.cpp" />
     <ClCompile Include="Player\PlayerStates\DefaultState\DefaultState.cpp" />
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp" />
-    <ClCompile Include="RulesManager\RulesManagerStates\IRulesState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusFourCardsState\PlusFourCardsState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\FirstTurnState\FirstTurnState.cpp" />
@@ -157,6 +157,7 @@
     <ClInclude Include="Player\PlayerStates\DefaultState\DefaultState.h" />
     <ClInclude Include="Player\PlayerStates\GotJumpedState\GotJumpedState.h" />
     <ClInclude Include="Player\PlayerStates\IPlayerState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusFourCardsState\PlusFourCardsState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\IRulesState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.h" />

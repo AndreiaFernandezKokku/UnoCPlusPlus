@@ -114,5 +114,10 @@ std::vector<Card> Importer::GetAllCards()
 		Card(Color::Green, CardAction::PlusTwo),
 		Card(Color::Green, CardAction::Reverse),
 		Card(Color::Green, CardAction::Jump),
+
+		Card(Color::Any, CardAction::PlusFour),
+		Card(Color::Any, CardAction::PlusFour),
+		Card(Color::Any, CardAction::PlusFour),
+		Card(Color::Any, CardAction::PlusFour),
 	};
 }

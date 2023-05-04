@@ -74,7 +74,7 @@ void DefaultTurnState::UpdateCurrentColorThatCanBePlayed(
 
 void DefaultTurnState::AddAllColors()
 {
-	for (int i = 0; i < sizeof(Color); i++)
+	for (int i = 0; i <= sizeof(Color); i++)
 	{
 		ColorsThatCanBePlayed.push_back(Color(i));
 	}
