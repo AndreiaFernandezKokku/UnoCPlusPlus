@@ -13,6 +13,6 @@ private:
 
 public:
 	RandomNameGenerator();
-	const std::string& CompleteRandomName();
+	const std::string CompleteRandomName();
 };
 

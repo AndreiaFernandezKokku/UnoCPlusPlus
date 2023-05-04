@@ -1,5 +1,6 @@
 ﻿#include "../Header/RandomNameGenerator.h"
 #include "../Header/RandomUtility.h"
+#include <cassert>
 
 RandomNameGenerator::RandomNameGenerator()
 {
@@ -9,9 +10,12 @@ RandomNameGenerator::RandomNameGenerator()
 		"Helga","Traianus" };
 }
 
-const std::string& RandomNameGenerator::CompleteRandomName()
+const std::string RandomNameGenerator::CompleteRandomName()
 {
-	//todo remove used name
+	assert(allNames.size() > 0,
+		"Need more names on random name generator. The names do not repeat.");
 	int index = RandomUtility::RandRange(0, allNames.size() - 1);
-	return allNames[index];
+	const _string name = allNames[index];
+	allNames.erase(allNames.begin() + index);
+	return name;
 }

@@ -40,10 +40,10 @@ void PlayersManager::SetNamesByInput(int numberOfPlayers, InputVariablesManager 
 
 void PlayersManager::SetNamesRandomGenerator(int numberOfPlayers)
 {
+	RandomNameGenerator nameGenerator = RandomNameGenerator{};
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		printf("Player %i ", i);
-		RandomNameGenerator nameGenerator = RandomNameGenerator{};
 		std::shared_ptr<std::string> name = std::make_shared<std::string>
 			(nameGenerator.CompleteRandomName());
 
