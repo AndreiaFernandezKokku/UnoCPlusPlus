@@ -5,7 +5,7 @@ RandomNameGenerator::RandomNameGenerator()
 {
 	allNames = { "Gotama","Telesphoros","Tangaroa","Avilius","Wodan",
 		"Radhika","Albertus","Chandrashekhar","Lalita","Abhishek","Viator",
-		"Fridenot","Fridwald","Devi","Vébjǫrn","Laurentinus","Deianira","Onouphrios",
+		"Fridenot","Fridwald","Devi","Vebjorn","Laurentinus","Deianira","Onouphrios",
 		"Helga","Traianus" };
 }
 

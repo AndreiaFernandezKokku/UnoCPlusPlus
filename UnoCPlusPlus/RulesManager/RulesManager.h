@@ -4,28 +4,31 @@
 #include <optional>
 #include "../Cards/Card.h"
 #include "TurnAction/TurnAction.h"
+#include "TurnActionSelector/DefaultTurnState/FirstTurnState/FirstTurnState.h"
+#include "TurnActionSelector/DefaultTurnState/DefaultTurnState.h"
+#include "TurnActionSelector/DefaultTurnState/JumpTurnState/JumpTurnState.h"
+#include "TurnActionSelector/DefaultTurnState/ReverseTurnState/ReverseTurnState.h"
+#include "TurnActionSelector/DefaultTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
 
 class RulesManager
 {
 	//todo add uno rules
 private:
-	std::vector<Color> colorsThatCanBePlayed;
-	std::vector<CardAction> cardActThatCanBePlayed;
-	int numberOfCardsThatStacked;
-	std::vector<TurnAction> actionsToTake;
+	int numberOfCardsThatStacked = 0;
+	std::vector<std::unique_ptr<IRulesState>> turnActions;
+	int currentState = 0;
 
-	void UpdateActionsBasedOnCardActions(const Card& currentTableCard);
-	void UpdateCurrentCardsThatCanBePlayed(const Card& currentTableCard);
-	void AddAllColors();
-	void AddAllActionsAndColors();
-	bool HasPlayableColor(const Color& color);
-	bool HasPlayableAction(const CardAction& action);
+	void UpdateState(const CardAction& currentCardAction);
+
 public:
+	RulesManager();
+
 	//todo separate for turn manager actions
-	void NewCardOnTable(std::optional<Card> currentTableCard);
+	void NewCardOnTable(Card currentTableCard);
 	void NoNewCardOnTable();
-	//todo serparate for player actions
 	const std::vector<TurnAction> GetCurrentTurnActionsAvailable();
+
+	//todo serparate for player actions
 	bool CanCardBePlayed(const Card& card);
 	int GetNumberOfCardsToBeBought();
 };

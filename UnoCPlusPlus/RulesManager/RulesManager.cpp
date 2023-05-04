@@ -1,137 +1,74 @@
 #include "RulesManager.h"
+#include <cassert>
 
-void RulesManager::NewCardOnTable(std::optional<Card> currentTableCard)
+RulesManager::RulesManager()
 {
-	colorsThatCanBePlayed.clear();
-	cardActThatCanBePlayed.clear();
-	actionsToTake.clear();
+	turnActions.emplace_back(std::make_unique<FirstTurnState>());
+	turnActions.emplace_back(std::make_unique<DefaultTurnState>());
+	turnActions.emplace_back(std::make_unique<JumpTurnState>());
+	turnActions.emplace_back(std::make_unique<ReverseTurnState>());
+	turnActions.emplace_back(
+		std::make_unique<PlusTwoCardsState>(&numberOfCardsThatStacked));
+	currentState = 0;
+}
 
-	if (!currentTableCard.has_value())
+void RulesManager::NewCardOnTable(Card currentTableCard)
+{
+	UpdateState(currentTableCard.action);
+	turnActions[currentState]->NewCardOnTable(currentTableCard);
+
+	if (currentState != 4)
 	{
-		AddAllActionsAndColors();
-
-		return;
+		assert(numberOfCardsThatStacked == 0,
+			"You can only have stacked cards on states that this is permitted.");
 	}
-
-	UpdateActionsBasedOnCardActions(currentTableCard.value());
-	UpdateCurrentCardsThatCanBePlayed(currentTableCard.value());
 }
 
 void RulesManager::NoNewCardOnTable()
 {
-	actionsToTake.clear();
-	actionsToTake.push_back(TurnAction::CanPlayCard);
-	numberOfCardsThatStacked = 0;
+	turnActions[currentState]->NoNewCardOnTable();
 }
 
-
-void RulesManager::UpdateActionsBasedOnCardActions(const Card& currentTableCard)
+void RulesManager::UpdateState(const CardAction& currentCardAction)
 {
-	switch (currentTableCard.action)
+	switch (currentCardAction)
 	{
 		case CardAction::Reverse:
 		{
-			actionsToTake.push_back(TurnAction::Reverse);
+			currentState = 3;
 			return;
 		}
 		case CardAction::Jump:
 		{
-			actionsToTake.push_back(TurnAction::Jumped);
+			currentState = 2;
 			return;
 		}
 		case CardAction::PlusTwo:
 		{
-			actionsToTake.push_back(TurnAction::BuyMultipleCard);
-			numberOfCardsThatStacked += 2;
-			[[fallthrough]];
+			currentState = 4;
+			return;
 		}
 		default: 
 		{
-			actionsToTake.push_back(TurnAction::CanPlayCard);
+			currentState = 1;
 			return;
 		}
-	}
-}
-
-void RulesManager::UpdateCurrentCardsThatCanBePlayed(const Card& currentTableCard)
-{
-	if (currentTableCard.color == Color::Any)
-	{
-		AddAllColors();
-	}
-	else
-	{
-		colorsThatCanBePlayed.push_back(currentTableCard.color);
-	}
-	cardActThatCanBePlayed.push_back(currentTableCard.action);
-}
-
-void RulesManager::AddAllColors()
-{
-	for (int i = 0; i < sizeof(Color); i++)
-	{
-		colorsThatCanBePlayed.push_back(Color(i));
-	}
-}
-
-void RulesManager::AddAllActionsAndColors()
-{
-	AddAllColors();
-	for (int i = 0; i < sizeof(CardAction); i++)
-	{
-		cardActThatCanBePlayed.push_back(CardAction(i));
 	}
 }
 
 const std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
 {
-	return actionsToTake;
+	return turnActions[currentState]->GetCurrentTurnActionsAvailable();
 }
 
 bool RulesManager::CanCardBePlayed(const Card& card)
 {
-	if (HasPlayableColor(card.color))
-	{
-		return true;
-	}
-	if (HasPlayableAction(card.action))
-	{
-		return true;
-	}
-	return false;
+	return turnActions[currentState]->CanCardBePlayed(card);
 }
 
 int RulesManager::GetNumberOfCardsToBeBought()
 {
 	return numberOfCardsThatStacked;
-}
-
-bool RulesManager::HasPlayableColor(const Color& color)
-{
-	if (std::find(colorsThatCanBePlayed.begin(), 
-		colorsThatCanBePlayed.end(), 
-		color) != colorsThatCanBePlayed.end())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool RulesManager::HasPlayableAction(const CardAction& action)
-{
-	if (std::find(cardActThatCanBePlayed.begin(),
-		cardActThatCanBePlayed.end(), 
-		action) != cardActThatCanBePlayed.end())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }
 
 

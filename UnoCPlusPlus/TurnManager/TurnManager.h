@@ -18,6 +18,7 @@ class TurnManager : public ITurnManagerDelegate
 	void DealWithReverseActionIfNeeded(const std::vector<TurnAction>& gameActions);
 	bool TurnActionsContainReverse(const std::vector<TurnAction>& gameActions);
 	void UpdatePlayerIndex(int& playerIndex);
+	void PrintCurrentTableCard();
 
 public:
 	TurnManager();

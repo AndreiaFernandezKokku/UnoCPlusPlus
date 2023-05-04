@@ -51,6 +51,24 @@
     <ClCompile Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\IRulesState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\FirstTurnState\FirstTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\JumpTurnState\JumpTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\DefaultTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\Importer\Importer.h">
@@ -105,6 +123,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\IRulesState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\ReverseTurnState\ReverseTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\FirstTurnState\FirstTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\JumpTurnState\JumpTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\DefaultTurnState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

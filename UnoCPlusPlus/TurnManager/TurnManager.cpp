@@ -4,7 +4,6 @@ TurnManager::TurnManager()
 {
 	playersManager = std::make_unique<PlayersManager>();
 	cardsManager = std::make_unique<CardsManager>();
-	rulesManager = RulesManager();
 
 	//todo maybe move these actions to their respective owners and just get delegates
 	CanCardBePlayed = [&] (const Card& card) 
@@ -35,7 +34,6 @@ void TurnManager::SetupForFirstTurn()
 	playersManager->ShuffleAllPlayersList();
 	cardsManager->PopulateDeckList();
 	cardsManager->ShuffleDeckList();
-	cardsManager->PrintDeckAmountOfCards();
 
 	for (Player& player : playersManager->AllPlayers)
 	{
@@ -61,10 +59,11 @@ bool TurnManager::IsThereAnyPlayerWithZeroCards()
 
 void TurnManager::StartTurns()
 {
-	rulesManager.NewCardOnTable(cardsManager->GetLastCardFromTable());
+	rulesManager.NoNewCardOnTable();
 	int playerIndex = -1;
+
 	while (!IsThereAnyPlayerWithZeroCards())
-	{
+	{	
 		std::vector<TurnAction> turnActions = 
 			rulesManager.GetCurrentTurnActionsAvailable();
 
@@ -84,6 +83,8 @@ void TurnManager::StartTurns()
 			printf("No card was placed in the table. \n");
 			rulesManager.NoNewCardOnTable();
 		}
+
+		PrintCurrentTableCard();
 	}
 }
 
@@ -126,5 +127,12 @@ void TurnManager::UpdatePlayerIndex(int& playerIndex)
 	{
 		playerIndex = 0;
 	}
+}
+
+void TurnManager::PrintCurrentTableCard()
+{
+	printf("\nCurrent table card: \n| %s , %s | \n",
+	ColorToString[static_cast<int>(cardsManager->GetLastCardFromTable()->color)],
+	CardActionToString[static_cast<int>(cardsManager->GetLastCardFromTable()->action)]);
 }
 
