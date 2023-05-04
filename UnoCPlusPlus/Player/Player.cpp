@@ -9,7 +9,7 @@ std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
     printf("\nIt's %s turn!", GetName());
     if (!CanPlay(turnAction))
     {
-        printf("Oh no you got a negation, oh noes... You can't play. \n");
+        printf("\nOh no you got a negation, oh noes... You can't play. \n");
         return std::nullopt;
     }
 

@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../Cards/Card.h"
 #include <optional>
+#include "../Cards/Card.h"
 #include "../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 #include "../RulesManager/TurnAction/TurnAction.h"
 #include "ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"

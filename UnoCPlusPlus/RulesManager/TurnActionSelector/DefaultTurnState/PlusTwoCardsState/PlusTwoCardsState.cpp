@@ -1,6 +1,6 @@
-#include "PlusTwoCardsAction.h"
+#include "PlusTwoCardsState.h"
 
-void PlusTwoCardsAction::NewCardOnTable(Card currentTableCard)
+void PlusTwoCardsState::NewCardOnTable(Card currentTableCard)
 {
 	ClearAllCurrentVariables();
 	CurrentColor = currentTableCard.color;
@@ -9,7 +9,7 @@ void PlusTwoCardsAction::NewCardOnTable(Card currentTableCard)
 	*NumberOfStackedCards += 2;
 }
 
-void PlusTwoCardsAction::NoNewCardOnTable()
+void PlusTwoCardsState::NoNewCardOnTable()
 {
 	ActionsToTake.clear();
 	*NumberOfStackedCards = 0; 

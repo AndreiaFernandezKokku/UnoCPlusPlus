@@ -1,9 +1,9 @@
-#include "ReverseTurnAction.h"
+#include "JumpTurnState.h"
 
-void ReverseTurnAction::NewCardOnTable(Card currentTableCard)
+void JumpTurnState::NewCardOnTable(Card currentTableCard)
 {
 	ClearAllCurrentVariables();
 	UpdateCurrentActionThatCanBePlayed(currentTableCard.action);
 	UpdateCurrentColorThatCanBePlayed(currentTableCard.color);
-	ActionsToTake.push_back(TurnAction::Reverse);
+	ActionsToTake.push_back(TurnAction::Jumped);
 }

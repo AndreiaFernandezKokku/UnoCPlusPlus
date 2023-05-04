@@ -1,20 +1,27 @@
 #include "RulesManager.h"
+#include <cassert>
 
 RulesManager::RulesManager()
 {
-	turnActions.emplace_back(std::make_unique<FirstTurnAction>());
-	turnActions.emplace_back(std::make_unique<DefaultTurnAction>());
-	turnActions.emplace_back(std::make_unique<JumpTurnAction>());
-	turnActions.emplace_back(std::make_unique<ReverseTurnAction>());
+	turnActions.emplace_back(std::make_unique<FirstTurnState>());
+	turnActions.emplace_back(std::make_unique<DefaultTurnState>());
+	turnActions.emplace_back(std::make_unique<JumpTurnState>());
+	turnActions.emplace_back(std::make_unique<ReverseTurnState>());
 	turnActions.emplace_back(
-		std::make_unique<PlusTwoCardsAction>(&numberOfCardsThatStacked));
+		std::make_unique<PlusTwoCardsState>(&numberOfCardsThatStacked));
 	currentState = 0;
 }
 
 void RulesManager::NewCardOnTable(Card currentTableCard)
 {
-	UpdateActionsBasedOnCardActions(currentTableCard);
+	UpdateState(currentTableCard.action);
 	turnActions[currentState]->NewCardOnTable(currentTableCard);
+
+	if (currentState != 4)
+	{
+		assert(numberOfCardsThatStacked == 0,
+			"You can only have stacked cards on states that this is permitted.");
+	}
 }
 
 void RulesManager::NoNewCardOnTable()
@@ -22,9 +29,9 @@ void RulesManager::NoNewCardOnTable()
 	turnActions[currentState]->NoNewCardOnTable();
 }
 
-void RulesManager::UpdateActionsBasedOnCardActions(const Card& currentTableCard)
+void RulesManager::UpdateState(const CardAction& currentCardAction)
 {
-	switch (currentTableCard.action)
+	switch (currentCardAction)
 	{
 		case CardAction::Reverse:
 		{

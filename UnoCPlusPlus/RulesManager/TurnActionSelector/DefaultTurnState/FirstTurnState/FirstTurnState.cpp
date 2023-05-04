@@ -1,7 +1,7 @@
-#include "FirstTurnAction.h"
+#include "FirstTurnState.h"
 #include <cassert>
 
-void FirstTurnAction::AddAllActions()
+void FirstTurnState::AddAllActions()
 {
 	for (int i = 0; i < sizeof(CardAction); i++)
 	{
@@ -9,13 +9,13 @@ void FirstTurnAction::AddAllActions()
 	}
 }
 
-void FirstTurnAction::NewCardOnTable(Card currentTableCard)
+void FirstTurnState::NewCardOnTable(Card currentTableCard)
 {
 	printf("Invalid state reached!");
 	assert(false, "First Turn should not have a new card on the table.");
 }
 
-void FirstTurnAction::NoNewCardOnTable()
+void FirstTurnState::NoNewCardOnTable()
 {
 	AddAllColors();
 	AddAllActions();

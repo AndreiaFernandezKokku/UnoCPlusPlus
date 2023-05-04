@@ -1,14 +1,14 @@
 #pragma once
-#include "../DefaultTurnAction.h"
+#include "../DefaultTurnState.h"
 
-class PlusTwoCardsAction : public DefaultTurnAction
+class PlusTwoCardsState : public DefaultTurnState
 {
 	int* NumberOfStackedCards;
 	Color CurrentColor;
 	
 public:
-	PlusTwoCardsAction(int* cardStackCount) : 
-		DefaultTurnAction{},
+	PlusTwoCardsState(int* cardStackCount) : 
+		DefaultTurnState{},
 		NumberOfStackedCards{ cardStackCount },
 		CurrentColor{ Color::Any } //just to initialize the color
 	{};

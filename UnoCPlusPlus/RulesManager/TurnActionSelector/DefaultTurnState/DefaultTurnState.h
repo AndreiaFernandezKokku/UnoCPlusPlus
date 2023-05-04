@@ -3,7 +3,7 @@
 #include "../../TurnAction/TurnAction.h"
 #include "../../../Cards/Card.h"
 
-class DefaultTurnAction : public IRulesState
+class DefaultTurnState : public IRulesState
 {
 protected:
 	std::vector<Color> ColorsThatCanBePlayed;
