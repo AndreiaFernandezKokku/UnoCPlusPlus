@@ -53,7 +53,9 @@ bool CardsManager::DoesDeckHaveEnoughCardsToSend(int amountToSend)
 		}
 		else
 		{
-			printf("Deck does not have enough cards to send. \n");
+			PrintDeckAmountOfCards();
+			PrintTableAmountOfCards();
+			printf("Not Deck nor table have have enough cards to send. \n");
 			return false;
 		}
 	}
@@ -73,7 +75,7 @@ bool CardsManager::DoesTableHaveEnoughCardsToSendToDeck(int amountToSend)
 void CardsManager::SendCardsFromTableToDeck()
 {
 	printf("Sending cards from table to deck. \n");
-	int vectorEndPlusMinTableCards = -1 - MIN_TABLE_CARDS;
+	int vectorEndPlusMinTableCards = 1 + MIN_TABLE_CARDS;
 	deck.insert(deck.end(),
 		std::make_move_iterator(table.begin()),
 		std::make_move_iterator(table.end() - vectorEndPlusMinTableCards));
@@ -81,6 +83,8 @@ void CardsManager::SendCardsFromTableToDeck()
 	table.erase(table.begin(), table.end() - vectorEndPlusMinTableCards);
 
 	ShuffleDeckList();
+	PrintDeckAmountOfCards();
+	PrintTableAmountOfCards();
 }
 
 void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
@@ -91,5 +95,10 @@ void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
 
 void CardsManager::PrintDeckAmountOfCards()
 {
-	printf("Deck amount of cards is: %i \n", deck.size());
+	printf("Deck amount of cards is: %i \n", static_cast<int>(deck.size()));
+}
+
+void CardsManager::PrintTableAmountOfCards()
+{
+	printf("Table amount of cards is: %i \n", static_cast<int>(table.size()));
 }

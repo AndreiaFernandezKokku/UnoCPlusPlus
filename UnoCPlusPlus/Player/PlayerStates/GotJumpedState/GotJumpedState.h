@@ -1,5 +1,6 @@
 #pragma once
 #include "../IPlayerState.h"
+
 class GotJumpedState : public IPlayerState
 {
 public:

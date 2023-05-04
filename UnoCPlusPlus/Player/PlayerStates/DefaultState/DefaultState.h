@@ -11,8 +11,6 @@ private:
 	ITurnManagerDelegate* Del;
 	std::vector<Card>& CurrentCards;
 	bool* HasCalledUno;
-	//These possible actions would only be cleaned when we access this state again :(
-	std::vector<std::unique_ptr<IPlayerActionsThatCanBeTaken>> PossibleActions;
 
 	void PopulatePossibleActions();
 	void PrintCard(const Card& cardToPrint);

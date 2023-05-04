@@ -3,7 +3,7 @@
 
 std::optional<Card> UnoWasNotCalledState::PlayTurn()
 {
-	printf("\nUh oh, you didn't call uno!");
-	printf("\n You buy 2 cards");
+	PossibleActions.clear();
+	printf("\nUh oh, you didn't call uno!\n You buy 2 cards \n");
 	return BuyCard(Del, CurrentCards, 2).TakeAction();
 }
