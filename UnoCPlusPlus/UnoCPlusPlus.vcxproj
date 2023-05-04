@@ -128,6 +128,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Player\PlayerStates\MustBuyState\MustBuyState.cpp" />
+    <ClCompile Include="Player\PlayerStates\DefaultState\DefaultState.cpp" />
+    <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\IRulesState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp" />
@@ -141,13 +144,19 @@
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="RulesManager\RulesManager.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.cpp" />
+    <ClCompile Include="Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.cpp" />
     <ClCompile Include="TurnManager\TurnManager.cpp" />
     <ClCompile Include="UnoCPlusPlus.cpp" />
+    <ClCompile Include="Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.cpp" />
     <ClCompile Include="Utilities\Cpp\InputVariablesManager.cpp" />
     <ClCompile Include="Utilities\Cpp\RandomNameGenerator.cpp" />
     <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Player\PlayerStates\MustBuyState\MustBuyState.h" />
+    <ClInclude Include="Player\PlayerStates\DefaultState\DefaultState.h" />
+    <ClInclude Include="Player\PlayerStates\GotJumpedState\GotJumpedState.h" />
+    <ClInclude Include="Player\PlayerStates\IPlayerState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\IRulesState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.h" />
@@ -166,8 +175,10 @@
     <ClInclude Include="RulesManager\RulesManager.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.h" />
     <ClInclude Include="RulesManager\TurnAction\TurnAction.h" />
+    <ClInclude Include="Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.h" />
     <ClInclude Include="TurnManager\ITurnManagerDelegate\ITurnManagerDelegate.h" />
     <ClInclude Include="TurnManager\TurnManager.h" />
+    <ClInclude Include="Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.h" />
     <ClInclude Include="Utilities\Header\FloatComparer.h" />
     <ClInclude Include="Utilities\Header\InputVariablesManager.h" />
     <ClInclude Include="Utilities\Header\RandomNameGenerator.h" />

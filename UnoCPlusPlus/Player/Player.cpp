@@ -1,69 +1,56 @@
 #include "Player.h"
-#include "ActionsThatCanBeTaken/BuyCard/BuyCard.h"
-#include "ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../Utilities/Header/InputVariablesManager.h"
+#include <cassert>
+
+void Player::InitializeStates(ITurnManagerDelegate* deleg)
+{
+    possibleStates.emplace_back(
+    std::make_unique<DefaultState>(deleg, currentCards, &unoWasCalledOut));
+    possibleStates.emplace_back(
+        std::make_unique<GotJumpedState>());
+    possibleStates.emplace_back(
+        std::make_unique<MustBuyState>(deleg, currentCards));
+    possibleStates.emplace_back(
+        std::make_unique<UnoWasNotCalledState>(deleg, currentCards));
+}
 
 std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
 {
-    possibleActions.clear();
+    assert(possibleStates.size() > 0,
+        "Before starting the turns, you need to initialize the player states");
     printf("\nIt's %s turn!", GetName());
-    if (!CanPlay(turnAction))
-    {
-        printf("\nOh no you got a negation, oh noes... You can't play. \n");
-        return std::nullopt;
-    }
-
-    ShowPlaceCardAction();
-    if (ShouldBuyMultipleCard(turnAction))
-    {
-        ShowObligationToBuyCard();
-    }
-    else
-    {
-        ShowBuyCardIfNoOwnedCardsIsValid();
-    }
-
-    return possibleActions[SelectActionToTake()]->TakeAction();
+    SelectState(turnAction);
+    return possibleStates[currentState]->PlayTurn();
 }
 
-bool Player::CanPlay(std::vector<TurnAction> turnAction)
+void Player::SelectState(std::vector<TurnAction> turnAction)
+{
+    if (GotJumped(turnAction))
+    {
+        currentState = 1;
+        return;
+    }
+    if (ShouldBuyMultipleCard(turnAction))
+    {
+        unoWasCalledOut = false;
+        currentState = 2;
+        return;
+    }
+    if (currentCards.size() == 1 && unoWasCalledOut == false)
+    {
+        currentState = 3;
+        return;
+    }
+    currentState = 0;
+}
+
+bool Player::GotJumped(std::vector<TurnAction> turnAction)
 {
     if (std::find(turnAction.begin(), turnAction.end(),
         TurnAction::Jumped) != turnAction.end())
     {
-        return false;
+        return true;
     }
-    return true;
-}
-
-void Player::ShowPlaceCardAction()
-{
-    for (int i = 0; i < currentCards.size(); i++)
-    {
-        PrintCard(currentCards[i]);
-        if (!del->CanCardBePlayed(currentCards[i])) continue;
-        PrintAction(possibleActions.size());
-        possibleActions.emplace_back(
-            std::make_unique<PlayCard>(del, currentCards, i));
-    }
-}
-
-void Player::ShowObligationToBuyCard()
-{
-    const int numOfCardsToBuy = del->NumberOfCardsToBeBought();
-    printf("\n Buy %i cards", numOfCardsToBuy);
-    PrintAction(possibleActions.size());
-    possibleActions.emplace_back(
-        std::make_unique<BuyCard>(del, currentCards, numOfCardsToBuy));
-}
-
-void Player::ShowBuyCardIfNoOwnedCardsIsValid()
-{
-    if (possibleActions.size() > 0) return;
-    printf("\n Buy %i cards", 1);
-    PrintAction(possibleActions.size());
-    possibleActions.emplace_back(
-        std::make_unique<BuyCard>(del, currentCards, 1));
+    return false;
 }
 
 bool Player::ShouldBuyMultipleCard(std::vector<TurnAction> turnAction)
@@ -74,27 +61,6 @@ bool Player::ShouldBuyMultipleCard(std::vector<TurnAction> turnAction)
         return true;
     }
     return false;
-}
-
-void Player::PrintAction(int actionNumber)
-{
-    printf(" [%i] ", actionNumber);
-}
-
-void Player::PrintCard(const Card& cardToPrint)
-{
-    printf("\n| %s , %s |",
-        ColorToString[static_cast<int>(cardToPrint.color)],
-        CardActionToString[static_cast<int>(cardToPrint.action)]);
-}
-
-const int Player::SelectActionToTake()
-{
-    InputVariablesManager inputManager = InputVariablesManager();
-    const int index = inputManager.GetIntegerInput("\n Select action to take! ", 
-        0, possibleActions.size() - 1);
-
-    return index;
 }
 
 const char* Player::GetName()

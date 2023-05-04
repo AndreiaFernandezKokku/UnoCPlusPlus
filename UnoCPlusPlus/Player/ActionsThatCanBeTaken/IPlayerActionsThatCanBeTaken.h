@@ -7,15 +7,13 @@
 class IPlayerActionsThatCanBeTaken
 {
 protected:
-	ITurnManagerDelegate* Del;
-	std::vector<Card>& CurrentCards;
-
-	IPlayerActionsThatCanBeTaken(ITurnManagerDelegate* del,
-		std::vector<Card>& currentCards) :
-		Del{ del }, CurrentCards{ currentCards }
+	IPlayerActionsThatCanBeTaken(bool isStackableAction) :
+		IsStackableAction{ isStackableAction }
 	{};
 
+
 public:
+	const bool IsStackableAction;
 	virtual std::optional<Card> TakeAction() = 0;
 };
 

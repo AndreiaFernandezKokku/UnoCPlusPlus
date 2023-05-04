@@ -5,32 +5,31 @@
 #include "../Cards/Card.h"
 #include "../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 #include "../RulesManager/TurnAction/TurnAction.h"
-#include "ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
+#include "PlayerStates/IPlayerState.h"
+#include "PlayerStates/DefaultState/DefaultState.h"
+#include "PlayerStates/GotJumpedState/GotJumpedState.h"
+#include "PlayerStates/MustBuyState/MustBuyState.h"
+#include "PlayerStates/UnoWasNotCalledState/UnoWasNotCalledState.h"
 
 class Player
 {
-	//todo add uno rules
 private:
 	std::vector<Card> currentCards;
 	std::shared_ptr<std::string> name;
-	std::vector<std::unique_ptr<IPlayerActionsThatCanBeTaken>> possibleActions;
+	std::vector<std::unique_ptr<IPlayerState>> possibleStates;
+	bool unoWasCalledOut = false;
+	int currentState = 0;
 
-	bool CanPlay(std::vector<TurnAction> turnAction);
-	void ShowPlaceCardAction();
-	void ShowObligationToBuyCard();
-	void ShowBuyCardIfNoOwnedCardsIsValid();
+	void SelectState(std::vector<TurnAction> turnAction);
+	bool GotJumped(std::vector<TurnAction> turnAction);
 	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
-	void PrintAction(int actionNumber);
-	void PrintCard(const Card& cardToPrint);
-	const int SelectActionToTake();
 
 public:
-	ITurnManagerDelegate* del = NULL;
-
 	Player(std::shared_ptr<std::string> nam) :
 		name{ nam }
 	{};
 
+	void InitializeStates(ITurnManagerDelegate* deleg);
 	std::optional<Card> StartTurn(std::vector<TurnAction> turnAction);
 	const char* GetName();
 	std::vector<Card>& GetCurrentCards();

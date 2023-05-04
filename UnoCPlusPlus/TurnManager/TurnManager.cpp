@@ -40,7 +40,7 @@ void TurnManager::SetupForFirstTurn()
 		cardsManager->PlaceAmountOfCardsFromDeckInVector(
 			player.GetCurrentCards(), INITIAL_CARDS);
 		player.PrintCurrentCards();
-		player.del = this;
+		player.InitializeStates(this);
 	}
 }
 

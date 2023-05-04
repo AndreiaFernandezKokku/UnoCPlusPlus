@@ -2,9 +2,9 @@
 
 std::optional<Card> BuyCard::TakeAction()
 {
-	if (numOfCardsToBeBought > 1)
+	if (NumOfCardsToBeBought > 1)
 	{
-		Del->PlaceAmountOfDeckCardsInVector(CurrentCards, numOfCardsToBeBought);
+		Del->PlaceAmountOfDeckCardsInVector(CurrentCards, NumOfCardsToBeBought);
 	}
 	else
 	{

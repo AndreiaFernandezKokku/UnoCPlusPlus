@@ -2,13 +2,17 @@
 #include "../IPlayerActionsThatCanBeTaken.h"
 class BuyCard : public IPlayerActionsThatCanBeTaken
 {
-	const int numOfCardsToBeBought;
+	ITurnManagerDelegate* Del;
+	std::vector<Card>& CurrentCards;
+	const int NumOfCardsToBeBought;
 
 public:
 	BuyCard(ITurnManagerDelegate* del, std::vector<Card>& currentCards, 
 		const int numOfCardsToBuy) :
-		IPlayerActionsThatCanBeTaken{ del, currentCards }, 
-		numOfCardsToBeBought{ numOfCardsToBuy }
+		IPlayerActionsThatCanBeTaken{ false },
+		Del{ del },
+		CurrentCards{ currentCards },
+		NumOfCardsToBeBought{ numOfCardsToBuy }
 	{};
 
 	std::optional<Card> TakeAction() override;
