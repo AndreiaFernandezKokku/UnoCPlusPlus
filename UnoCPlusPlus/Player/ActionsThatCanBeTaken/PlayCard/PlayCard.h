@@ -3,11 +3,14 @@
 
 class PlayCard : public IPlayerActionsThatCanBeTaken
 {
-	const int cardIndexToPlay;
+	std::vector<Card>& CurrentCards;
+	const int CardIndexToPlay;
+
 public:
-	PlayCard(ITurnManagerDelegate* del,
-		std::vector<Card>& currentCards, const int cardIndex) :
-		IPlayerActionsThatCanBeTaken{ del, currentCards }, cardIndexToPlay{ cardIndex }
+	PlayCard(std::vector<Card>& currentCards, const int cardIndex) :
+		IPlayerActionsThatCanBeTaken{ false },
+		CurrentCards{ currentCards },
+		CardIndexToPlay{ cardIndex }
 	{};
 
 	std::optional<Card> TakeAction() override;

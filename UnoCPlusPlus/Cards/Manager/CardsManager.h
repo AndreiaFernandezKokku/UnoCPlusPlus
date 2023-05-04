@@ -9,7 +9,6 @@ class CardsManager
 	std::vector<Card> deck;
 	std::vector<Card> table;
 
-	//todo test
 	bool DoesDeckHaveEnoughCardsToSend(int amountToSend);
 	bool DoesTableHaveEnoughCardsToSendToDeck(int amountToSend);
 	void SendCardsFromTableToDeck();
@@ -17,15 +16,14 @@ class CardsManager
 public:
 	void PopulateDeckList();
 	void ShuffleDeckList();
-	// here we move
+
 	void PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace);
 	void PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace, 
 		int amount);
-	// /here we move
-	// here we copy
+
 	const std::optional<Card> GetLastCardFromTable();
 	void PlaceCardOnTable(Card cardToPlaceOnTable);
-	// /here we copy
 	void PrintDeckAmountOfCards();
+	void PrintTableAmountOfCards();
 };
 
