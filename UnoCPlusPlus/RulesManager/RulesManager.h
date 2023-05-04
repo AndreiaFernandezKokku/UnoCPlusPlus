@@ -4,18 +4,18 @@
 #include <optional>
 #include "../Cards/Card.h"
 #include "TurnAction/TurnAction.h"
-#include "TurnActionSelector/DefaultTurnState/FirstTurnState/FirstTurnState.h"
-#include "TurnActionSelector/DefaultTurnState/DefaultTurnState.h"
-#include "TurnActionSelector/DefaultTurnState/JumpTurnState/JumpTurnState.h"
-#include "TurnActionSelector/DefaultTurnState/ReverseTurnState/ReverseTurnState.h"
-#include "TurnActionSelector/DefaultTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
+#include "RulesManagerStates/DefaultTurnState/FirstTurnState/FirstTurnState.h"
+#include "RulesManagerStates/DefaultTurnState/DefaultTurnState.h"
+#include "RulesManagerStates/DefaultTurnState/JumpTurnState/JumpTurnState.h"
+#include "RulesManagerStates/DefaultTurnState/ReverseTurnState/ReverseTurnState.h"
+#include "RulesManagerStates/DefaultTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
 
 class RulesManager
 {
 	//todo add uno rules
 private:
 	int numberOfCardsThatStacked = 0;
-	std::vector<std::unique_ptr<IRulesState>> turnActions;
+	std::vector<std::unique_ptr<IRulesState>> turnStates;
 	int currentState = 0;
 
 	void UpdateState(const CardAction& currentCardAction);

@@ -3,11 +3,11 @@
 
 RulesManager::RulesManager()
 {
-	turnActions.emplace_back(std::make_unique<FirstTurnState>());
-	turnActions.emplace_back(std::make_unique<DefaultTurnState>());
-	turnActions.emplace_back(std::make_unique<JumpTurnState>());
-	turnActions.emplace_back(std::make_unique<ReverseTurnState>());
-	turnActions.emplace_back(
+	turnStates.emplace_back(std::make_unique<FirstTurnState>());
+	turnStates.emplace_back(std::make_unique<DefaultTurnState>());
+	turnStates.emplace_back(std::make_unique<JumpTurnState>());
+	turnStates.emplace_back(std::make_unique<ReverseTurnState>());
+	turnStates.emplace_back(
 		std::make_unique<PlusTwoCardsState>(&numberOfCardsThatStacked));
 	currentState = 0;
 }
@@ -15,7 +15,7 @@ RulesManager::RulesManager()
 void RulesManager::NewCardOnTable(Card currentTableCard)
 {
 	UpdateState(currentTableCard.action);
-	turnActions[currentState]->NewCardOnTable(currentTableCard);
+	turnStates[currentState]->NewCardOnTable(currentTableCard);
 
 	if (currentState != 4)
 	{
@@ -26,7 +26,7 @@ void RulesManager::NewCardOnTable(Card currentTableCard)
 
 void RulesManager::NoNewCardOnTable()
 {
-	turnActions[currentState]->NoNewCardOnTable();
+	turnStates[currentState]->NoNewCardOnTable();
 }
 
 void RulesManager::UpdateState(const CardAction& currentCardAction)
@@ -58,12 +58,12 @@ void RulesManager::UpdateState(const CardAction& currentCardAction)
 
 const std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
 {
-	return turnActions[currentState]->GetCurrentTurnActionsAvailable();
+	return turnStates[currentState]->GetCurrentTurnActionsAvailable();
 }
 
 bool RulesManager::CanCardBePlayed(const Card& card)
 {
-	return turnActions[currentState]->CanCardBePlayed(card);
+	return turnStates[currentState]->CanCardBePlayed(card);
 }
 
 int RulesManager::GetNumberOfCardsToBeBought()

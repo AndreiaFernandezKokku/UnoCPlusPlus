@@ -128,11 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RulesManager\TurnActionSelector\IRulesState.cpp" />
-    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp" />
-    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp" />
-    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\FirstTurnState\FirstTurnState.cpp" />
-    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\JumpTurnState\JumpTurnState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\IRulesState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\FirstTurnState\FirstTurnState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\JumpTurnState\JumpTurnState.cpp" />
     <ClCompile Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.cpp" />
     <ClCompile Include="Player\ActionsThatCanBeTaken\BuyCard\BuyCard.cpp" />
     <ClCompile Include="Cards\Manager\CardsManager.cpp" />
@@ -140,7 +140,7 @@
     <ClCompile Include="Player\Manager\PlayersManager.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="RulesManager\RulesManager.cpp" />
-    <ClCompile Include="RulesManager\TurnActionSelector\DefaultTurnState\DefaultTurnState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.cpp" />
     <ClCompile Include="TurnManager\TurnManager.cpp" />
     <ClCompile Include="UnoCPlusPlus.cpp" />
     <ClCompile Include="Utilities\Cpp\InputVariablesManager.cpp" />
@@ -148,11 +148,11 @@
     <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RulesManager\TurnActionSelector\IRulesState.h" />
-    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h" />
-    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\ReverseTurnState\ReverseTurnState.h" />
-    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\FirstTurnState\FirstTurnState.h" />
-    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\JumpTurnState\JumpTurnState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\IRulesState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\FirstTurnState\FirstTurnState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\JumpTurnState\JumpTurnState.h" />
     <ClInclude Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.h" />
     <ClInclude Include="Player\ActionsThatCanBeTaken\BuyCard\BuyCard.h" />
     <ClInclude Include="Cards\Manager\CardsManager.h" />
@@ -164,7 +164,7 @@
     <ClInclude Include="Player\Manager\PlayersManager.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="RulesManager\RulesManager.h" />
-    <ClInclude Include="RulesManager\TurnActionSelector\DefaultTurnState\DefaultTurnState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.h" />
     <ClInclude Include="RulesManager\TurnAction\TurnAction.h" />
     <ClInclude Include="TurnManager\ITurnManagerDelegate\ITurnManagerDelegate.h" />
     <ClInclude Include="TurnManager\TurnManager.h" />
