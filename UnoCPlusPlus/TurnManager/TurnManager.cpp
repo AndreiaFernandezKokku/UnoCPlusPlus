@@ -4,7 +4,6 @@ TurnManager::TurnManager()
 {
 	playersManager = std::make_unique<PlayersManager>();
 	cardsManager = std::make_unique<CardsManager>();
-	rulesManager = RulesManager();
 
 	//todo maybe move these actions to their respective owners and just get delegates
 	CanCardBePlayed = [&] (const Card& card) 

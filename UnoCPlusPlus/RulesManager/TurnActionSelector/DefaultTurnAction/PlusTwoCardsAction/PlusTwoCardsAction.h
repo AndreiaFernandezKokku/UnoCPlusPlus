@@ -3,11 +3,11 @@
 
 class PlusTwoCardsAction : public DefaultTurnAction
 {
-	int& NumberOfStackedCards;
+	int* NumberOfStackedCards;
 	Color CurrentColor;
 	
 public:
-	PlusTwoCardsAction(int& cardStackCount) : 
+	PlusTwoCardsAction(int* cardStackCount) : 
 		DefaultTurnAction{},
 		NumberOfStackedCards{ cardStackCount },
 		CurrentColor{ Color::Any } //just to initialize the color

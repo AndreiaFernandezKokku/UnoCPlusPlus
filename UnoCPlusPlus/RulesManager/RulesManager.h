@@ -14,7 +14,7 @@ class RulesManager
 {
 	//todo add uno rules
 private:
-	int numberOfCardsThatStacked;
+	int numberOfCardsThatStacked = 0;
 	std::vector<std::unique_ptr<IRulesState>> turnActions;
 	int currentState = 0;
 

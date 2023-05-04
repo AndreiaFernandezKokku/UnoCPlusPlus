@@ -7,7 +7,7 @@ RulesManager::RulesManager()
 	turnActions.emplace_back(std::make_unique<JumpTurnAction>());
 	turnActions.emplace_back(std::make_unique<ReverseTurnAction>());
 	turnActions.emplace_back(
-		std::make_unique<PlusTwoCardsAction>(numberOfCardsThatStacked));
+		std::make_unique<PlusTwoCardsAction>(&numberOfCardsThatStacked));
 	currentState = 0;
 }
 
