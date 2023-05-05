@@ -7,7 +7,8 @@ enum class Color
 	Yellow = 1,
 	Red = 2,
 	Green = 3,
-	Any = 4
+	Any = 4,
+	Count = 5
 };
 
 static const char* ColorToString[] = {

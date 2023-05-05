@@ -3,7 +3,7 @@
 
 void FirstTurnState::AddAllActions()
 {
-	for (int i = 0; i <= sizeof(CardAction); i++)
+	for (int i = 0; i < static_cast<int>(CardAction::Count); i++)
 	{
 		CardActThatCanBePlayed.push_back(CardAction(i));
 	}

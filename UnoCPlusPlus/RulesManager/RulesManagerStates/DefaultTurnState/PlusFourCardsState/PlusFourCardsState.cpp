@@ -23,11 +23,16 @@ Color PlusFourCardsState::SelectColor()
 {
 	InputVariablesManager manager = InputVariablesManager();
 	printf("Select next card color \n");
-	for (int i = 0; i < sizeof(Color); i++)
+
+	//Since Count = last, and any = last -1, we need the last color
+	//so -2
+	int lastColor = static_cast<int>(Color::Count) - 2;
+
+	for (int i = 0; i <= lastColor; i++)
 	{
-		printf("%s [%i] \n",
-			ColorToString[static_cast<int>(Color(i))], i);
+		printf("%s [%i] \n", ColorToString[i], i);
 	}
-	int input = manager.GetIntegerInput("", 0, sizeof(Color) - 1);
+	int input = manager.GetIntegerInput("", 0, lastColor);
+	
 	return Color(input);
 }

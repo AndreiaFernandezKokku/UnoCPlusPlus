@@ -16,6 +16,7 @@ enum class CardAction
 	Reverse = 11,
 	Jump = 12,
 	PlusFour = 13,
+	Count = 14,
 };
 
 static const char* CardActionToString[] = {
