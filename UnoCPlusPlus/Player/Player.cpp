@@ -4,7 +4,7 @@
 void Player::InitializeStates(ITurnManagerDelegate* deleg)
 {
     possibleStates.emplace_back(
-    std::make_unique<DefaultState>(deleg, currentCards, &unoWasCalledOut));
+        std::make_unique<DefaultState>(deleg, currentCards, &unoWasCalledOut));
     possibleStates.emplace_back(
         std::make_unique<GotJumpedState>());
     possibleStates.emplace_back(

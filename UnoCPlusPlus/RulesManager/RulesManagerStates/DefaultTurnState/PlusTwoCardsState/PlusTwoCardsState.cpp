@@ -5,6 +5,7 @@ void PlusTwoCardsState::NewCardOnTable(Card currentTableCard)
 	ClearAllCurrentVariables();
 	CurrentColor = currentTableCard.color;
 	CardActThatCanBePlayed.push_back(currentTableCard.action);
+	CardActThatCanBePlayed.push_back(CardAction::PlusFour);
 	ActionsToTake.push_back(TurnAction::BuyMultipleCard);
 	*NumberOfStackedCards += 2;
 }

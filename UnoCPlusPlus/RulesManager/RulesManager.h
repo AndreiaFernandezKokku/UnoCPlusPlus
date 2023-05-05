@@ -9,6 +9,7 @@
 #include "RulesManagerStates/DefaultTurnState/JumpTurnState/JumpTurnState.h"
 #include "RulesManagerStates/DefaultTurnState/ReverseTurnState/ReverseTurnState.h"
 #include "RulesManagerStates/DefaultTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
+#include "RulesManagerStates/DefaultTurnState/PlusFourCardsState/PlusFourCardsState.h"
 
 class RulesManager
 {
