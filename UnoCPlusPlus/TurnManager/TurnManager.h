@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../IPlayersManagerDelegate/IPlayersManagerDelegate.h"
+#include "../PlayersManager/IPlayersManagerDataSource/IPlayersManagerDataSource.h"
 #include "../RulesManager/IRulesForTurnDelegate/IRulesForTurnDelegate.h"
 #include "../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
 class TurnManager
 {
-	std::shared_ptr<IPlayersManagerDelegate> playersManagerDel;
+	std::shared_ptr<IPlayersManagerDataSource> playersManagerDataSource;
 	std::shared_ptr<ICardsManagerDelegate> cardsManagerDel;
 	std::shared_ptr<IRulesForTurnDelegate> rulesManagerDel;
 	bool moveForwards = true;
@@ -19,10 +19,10 @@ class TurnManager
 	void PrintCurrentTableCard();
 
 public:
-	TurnManager(std::shared_ptr<IPlayersManagerDelegate> playersManager,
+	TurnManager(std::shared_ptr<IPlayersManagerDataSource> playersManager,
 		std::shared_ptr<ICardsManagerDelegate> cardsManager,
 		std::shared_ptr<IRulesForTurnDelegate> rulesManager) :
-		playersManagerDel{ playersManager },
+		playersManagerDataSource{ playersManager },
 		cardsManagerDel{ cardsManager },
 		rulesManagerDel{ rulesManager }
 	{};

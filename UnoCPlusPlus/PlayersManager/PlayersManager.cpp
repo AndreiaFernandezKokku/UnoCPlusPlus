@@ -1,5 +1,5 @@
 #include "PlayersManager.h"
-#include "../../Utilities/Header/RandomUtility.h"
+#include "../Utilities/Header/RandomUtility.h"
 
 std::vector<Player>& PlayersManager::GetAllPlayers()
 {
@@ -70,8 +70,7 @@ void PlayersManager::CreatePlayer(std::shared_ptr<std::string> name,
 void PlayersManager::ShuffleAllPlayersList()
 {
 	RandomUtility random = RandomUtility{};
-	random.ShuffleVector<std::vector<Player>>
-		(AllPlayers.begin(), AllPlayers.end());
+	random.ShuffleVector<std::vector<Player>>(AllPlayers.begin(), AllPlayers.end());
 }
 
 void PlayersManager::PrintInitialPlayers()

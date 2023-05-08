@@ -7,7 +7,7 @@ void TurnManager::SetupForFirstTurn()
 
 bool TurnManager::IsThereAnyPlayerWithZeroCards()
 {
-	for (Player& player : playersManagerDel->GetAllPlayers())
+	for (Player& player : playersManagerDataSource->GetAllPlayers())
 	{
 		if (player.GetCurrentCardsSize() <= 0)
 		{
@@ -31,7 +31,7 @@ void TurnManager::StartTurns()
 		UpdatePlayerIndex(playerIndex);
 
 		std::optional<Card> card = 
-			playersManagerDel->GetAllPlayers()[playerIndex].StartTurn(turnActions);
+			playersManagerDataSource->GetAllPlayers()[playerIndex].StartTurn(turnActions);
 
 		if (card.has_value())
 		{
@@ -79,11 +79,11 @@ void TurnManager::UpdatePlayerIndex(int& playerIndex)
 
 	if (playerIndex < 0)
 	{
-		playerIndex = playersManagerDel->GetAllPlayers().size() - 1;
+		playerIndex = playersManagerDataSource->GetAllPlayers().size() - 1;
 		return;
 	}
 
-	if (playerIndex >= playersManagerDel->GetAllPlayers().size())
+	if (playerIndex >= playersManagerDataSource->GetAllPlayers().size())
 	{
 		playerIndex = 0;
 	}

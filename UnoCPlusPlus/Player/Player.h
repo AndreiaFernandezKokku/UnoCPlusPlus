@@ -21,6 +21,10 @@ private:
 	std::shared_ptr<bool> unoWasCalledOutPtr;
 	int currentState = 0;
 
+	void InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel);
+	void InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource);
+
 	void SelectState(std::vector<TurnAction> turnAction);
 	bool GotJumped(std::vector<TurnAction> turnAction);
 	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
@@ -31,11 +35,10 @@ public:
 		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource) :
 		name{ nam }
 	{
+		InitializeVariables(cardsManager);
 		InitializeStates(cardsManager, rulesDataSource);
 	};
 
-	void InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
-		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource);
 
 	std::optional<Card> StartTurn(std::vector<TurnAction> turnAction);
 	const char* GetName();

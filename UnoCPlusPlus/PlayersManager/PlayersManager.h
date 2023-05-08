@@ -1,14 +1,13 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../../Player/Player.h"
-#include "../../Utilities/Header/InputVariablesManager.h"
-#include "../IPlayersManagerDelegate.h"
-#include "../../Utilities/Header/RandomNameGenerator.h"
-#include "../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
-#include "../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "IPlayersManagerDataSource/IPlayersManagerDataSource.h"
+#include "../Utilities/Header/InputVariablesManager.h"
+#include "../Utilities/Header/RandomNameGenerator.h"
+#include "../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
+#include "../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
 
-class PlayersManager : public IPlayersManagerDelegate
+class PlayersManager : public IPlayersManagerDataSource
 {
 private:
 	const int MIN_NUM_OF_PLAYERS = 2;

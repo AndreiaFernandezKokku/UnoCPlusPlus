@@ -1,8 +1,8 @@
 #include <memory>
 #include "TurnManager/TurnManager.h"
-#include "IPlayersManagerDelegate/Manager/PlayersManager.h"
 #include "Cards/ICardsManagerDelegate/Manager/CardsManager.h"
 #include "RulesManager/RulesManager.h"
+#include "PlayersManager/PlayersManager.h"
 
 int main()
 {
@@ -12,15 +12,10 @@ int main()
     std::shared_ptr rulesManager = std::make_shared<RulesManager>();
     
     std::shared_ptr playersManager = std::make_shared<PlayersManager>();
-    playersManager->InitializePlayers(
-        cardsManager,
-        rulesManager);
+    playersManager->InitializePlayers(cardsManager, rulesManager);
     playersManager->PrintInitialPlayers();
     
-    TurnManager turnManager = TurnManager(
-        playersManager,
-        cardsManager,
-        rulesManager);
+    TurnManager turnManager = TurnManager(playersManager, cardsManager, rulesManager);
     turnManager.SetupForFirstTurn();
     turnManager.StartTurns();
 }

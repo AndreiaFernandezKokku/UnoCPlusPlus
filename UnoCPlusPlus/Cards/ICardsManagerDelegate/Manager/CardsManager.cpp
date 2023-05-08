@@ -13,6 +13,7 @@ void CardsManager::PopulateDeckList()
 {
 	Importer importer = Importer{};
 	deck = importer.GetAllCards();
+	PrintDeckAmountOfCards();
 }
 
 void CardsManager::ShuffleDeckList()
@@ -20,12 +21,10 @@ void CardsManager::ShuffleDeckList()
 	RandomUtility::ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
 }
 
-void CardsManager::PlaceInitialCardsInVector(
-	std::vector<Card>&& vectorToPlace)
+void CardsManager::PlaceInitialCardsInVector(std::vector<Card>&& vectorToPlace)
 {
 	assert(deck.size() >= INITIAL_CARDS,
 		"You must initialize the deck with cards enough to give to the players");
-	if (!DoesDeckHaveEnoughCardsToSend(INITIAL_CARDS)) return;
 
 	vectorToPlace.insert(vectorToPlace.end(),
 	std::make_move_iterator(deck.begin()),
@@ -34,8 +33,7 @@ void CardsManager::PlaceInitialCardsInVector(
 	deck.erase(deck.begin(), deck.begin() + INITIAL_CARDS);
 }
 
-void CardsManager::PlaceOneCardFromDeckInVector(
-	std::vector<Card>&& vectorToPlace)
+void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>&& vectorToPlace)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(1)) return;
 
@@ -43,8 +41,7 @@ void CardsManager::PlaceOneCardFromDeckInVector(
 	deck.pop_back();
 }
 
-void CardsManager::PlaceAmountOfCardsFromDeckInVector(
-	std::vector<Card>&& vectorToPlace,
+void CardsManager::PlaceAmountOfCardsFromDeckInVector(std::vector<Card>&& vectorToPlace,
 	int amount)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(amount)) return;

@@ -1,19 +1,23 @@
 #include "Player.h"
 #include <cassert>
 
-void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
-        std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
+
+void Player::InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel)
 {
     sharedPtrCurrentCards = std::make_shared<std::vector<Card>>();
     unoWasCalledOutPtr = std::make_shared<bool>(false);
-    cardsManagerDel->PlaceInitialCardsInVector(std::move(*sharedPtrCurrentCards));
 
+    cardsManagerDel->PlaceInitialCardsInVector(std::move(*sharedPtrCurrentCards));
+}
+
+void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+        std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
+{
     possibleStates.emplace_back(
         std::make_unique<DefaultState>(cardsManagerDel, 
         rulesDataSource, sharedPtrCurrentCards, unoWasCalledOutPtr));
 
-    possibleStates.emplace_back(
-        std::make_unique<GotJumpedState>());
+    possibleStates.emplace_back(std::make_unique<GotJumpedState>());
 
     possibleStates.emplace_back(
         std::make_unique<MustBuyState>(cardsManagerDel,
