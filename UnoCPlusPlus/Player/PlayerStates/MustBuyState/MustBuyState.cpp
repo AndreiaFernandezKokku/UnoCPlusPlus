@@ -29,9 +29,7 @@ std::optional<Card> MustBuyState::PlayTurn()
 
 void MustBuyState::PrintCard(const Card & cardToPrint)
 {
-	printf("\n| %s , %s |",
-		ColorToString[static_cast<int>(cardToPrint.color)],
-		CardActionToString[static_cast<int>(cardToPrint.action)]);
+	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
 }
 
 void MustBuyState::PrintActionNumber(int actionNumber)
