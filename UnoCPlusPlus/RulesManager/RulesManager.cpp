@@ -1,6 +1,7 @@
 #include "RulesManager.h"
 #include <cassert>
 
+
 RulesManager::RulesManager()
 {
 	turnStates.emplace_back(std::make_unique<FirstTurnState>());
@@ -11,66 +12,64 @@ RulesManager::RulesManager()
 		std::make_unique<PlusTwoCardsState>(&numberOfCardsThatStacked));
 	turnStates.emplace_back(
 		std::make_unique<PlusFourCardsState>(&numberOfCardsThatStacked));
-	currentState = 0;
+	currentStateClassIndex = SelectStateClassIndex<FirstTurnState>();
 }
 
 void RulesManager::NewCardOnTable(const Card& currentTableCard)
 {
-	UpdateState(currentTableCard.action);
-	turnStates[currentState]->NewCardOnTable(currentTableCard);
-
-	if (currentState != 4 && currentState != 5)
-	{
-		assert(numberOfCardsThatStacked == 0,
-			"You can only have stacked cards on states that this is permitted.");
-	}
+	currentStateClassIndex = GetNewStateIndex(currentTableCard.action);
+	turnStates[currentStateClassIndex]->NewCardOnTable(currentTableCard);
 }
 
 void RulesManager::NoNewCardOnTable()
 {
-	turnStates[currentState]->NoNewCardOnTable();
+	turnStates[currentStateClassIndex]->NoNewCardOnTable();
 }
 
-void RulesManager::UpdateState(const CardAction& currentCardAction)
+int RulesManager::GetNewStateIndex(const CardAction& currentCardAction)
 {
 	switch (currentCardAction)
 	{
 		case CardAction::Reverse:
 		{
-			currentState = 3;
-			return;
+			AssertNumberOfCardsStackedIsZero();
+			return SelectStateClassIndex<ReverseTurnState>();
 		}
 		case CardAction::Jump:
 		{
-			currentState = 2;
-			return;
+			AssertNumberOfCardsStackedIsZero();
+			return SelectStateClassIndex<JumpTurnState>();
 		}
 		case CardAction::PlusTwo:
 		{
-			currentState = 4;
-			return;
+			return SelectStateClassIndex<PlusTwoCardsState>();
 		}
 		case CardAction::PlusFour:
 		{
-			currentState = 5;
-			return;
+			return SelectStateClassIndex<PlusFourCardsState>();
 		}
 		default: 
 		{
-			currentState = 1;
-			return;
+			AssertNumberOfCardsStackedIsZero();
+			return SelectStateClassIndex<DefaultTurnState>();
 		}
 	}
 }
 
+void RulesManager::AssertNumberOfCardsStackedIsZero()
+{
+	assert(numberOfCardsThatStacked == 0,
+		"You can only have stacked cards on states that this is permitted.");
+}
+
 const std::vector<TurnAction> RulesManager::GetCurrentTurnActionsAvailable()
 {
-	return turnStates[currentState]->GetCurrentTurnActionsAvailable();
+	return turnStates[currentStateClassIndex]->GetCurrentTurnActionsAvailable();
 }
 
 bool RulesManager::CanCardBePlayed(const Card& card)
 {
-	return turnStates[currentState]->CanCardBePlayed(card);
+	return turnStates[currentStateClassIndex]->CanCardBePlayed(card);
 }
 
 int RulesManager::GetNumberOfCardsToBeBought()

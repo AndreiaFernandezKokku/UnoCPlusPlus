@@ -1,7 +1,7 @@
 #pragma once
-#include "../DefaultTurnState.h"
+#include "../BasicTurnState.h"
 
-class FirstTurnState : public DefaultTurnState
+class FirstTurnState : public BasicTurnState
 {
 	void AddAllActions();
 public:
