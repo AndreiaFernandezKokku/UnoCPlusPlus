@@ -14,7 +14,7 @@ RulesManager::RulesManager()
 	currentState = 0;
 }
 
-void RulesManager::NewCardOnTable(Card currentTableCard)
+void RulesManager::NewCardOnTable(const Card& currentTableCard)
 {
 	UpdateState(currentTableCard.action);
 	turnStates[currentState]->NewCardOnTable(currentTableCard);

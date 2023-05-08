@@ -25,7 +25,7 @@ public:
 	RulesManager();
 
 	//IRulesForTurnManagerDelegate
-	void NewCardOnTable(Card currentTableCard) override;
+	void NewCardOnTable(const Card& currentTableCard) override;
 	void NoNewCardOnTable() override;
 	const std::vector<TurnAction> GetCurrentTurnActionsAvailable() override;
 

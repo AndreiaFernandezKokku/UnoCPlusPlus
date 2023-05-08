@@ -19,15 +19,26 @@ private:
 	std::shared_ptr<std::string> name;
 	std::vector<std::unique_ptr<IPlayerState>> possibleStates;
 	std::shared_ptr<bool> unoWasCalledOutPtr;
-	int currentState = 0;
 
 	void InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel);
 	void InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
 		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource);
 
-	void SelectState(std::vector<TurnAction> turnAction);
+	std::unique_ptr<IPlayerState>& SelectState(std::vector<TurnAction> turnAction);
 	bool GotJumped(std::vector<TurnAction> turnAction);
 	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
+
+	template<typename stateClass>
+	std::unique_ptr<IPlayerState>& SelectStateClass()
+	{
+		for (auto& state : possibleStates)
+		{
+			if (dynamic_cast<stateClass*>(state.get()))
+			{
+				return state;
+			}
+		}
+	}
 
 public:
 	Player(std::shared_ptr<std::string> nam, 
