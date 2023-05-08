@@ -1,7 +1,7 @@
 #pragma once
-#include "../DefaultTurnState.h"
+#include "../BasicTurnState.h"
 
-class JumpTurnState : public DefaultTurnState
+class JumpTurnState : public BasicTurnState
 {
 	Color colorForNextTurn;
 public:

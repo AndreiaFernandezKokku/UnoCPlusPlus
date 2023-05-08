@@ -1,23 +1,23 @@
-#include "DefaultTurnState.h"
+#include "BasicTurnState.h"
 
-std::vector<TurnAction> DefaultTurnState::GetCurrentTurnActionsAvailable()
+std::vector<TurnAction> BasicTurnState::GetCurrentTurnActionsAvailable()
 {
 	return ActionsToTake;
 }
 
-void DefaultTurnState::NewCardOnTable(Card currentTableCard)
+void BasicTurnState::NewCardOnTable(Card currentTableCard)
 {
 	ClearAllCurrentVariables();
 	UpdateCurrentColorThatCanBePlayed(currentTableCard.color);
 	UpdateCurrentActionThatCanBePlayed(currentTableCard.action);
 }
 
-void DefaultTurnState::NoNewCardOnTable()
+void BasicTurnState::NoNewCardOnTable()
 {
 	ActionsToTake.clear();
 }
 
-bool DefaultTurnState::CanCardBePlayed(const Card& card)
+bool BasicTurnState::CanCardBePlayed(const Card& card)
 {
 	if (HasPlayableColor(card.color))
 	{
@@ -30,7 +30,7 @@ bool DefaultTurnState::CanCardBePlayed(const Card& card)
 	return false;
 }
 
-bool DefaultTurnState::HasPlayableColor(const Color& color)
+bool BasicTurnState::HasPlayableColor(const Color& color)
 {
 	if (std::find(ColorsThatCanBePlayed.begin(), 
 		ColorsThatCanBePlayed.end(), 
@@ -44,7 +44,7 @@ bool DefaultTurnState::HasPlayableColor(const Color& color)
 	}
 }
 
-bool DefaultTurnState::HasPlayableAction(const CardAction& action)
+bool BasicTurnState::HasPlayableAction(const CardAction& action)
 {
 	if (std::find(CardActThatCanBePlayed.begin(),
 		CardActThatCanBePlayed.end(),
@@ -58,7 +58,7 @@ bool DefaultTurnState::HasPlayableAction(const CardAction& action)
 	}
 }
 
-void DefaultTurnState::UpdateCurrentColorThatCanBePlayed(
+void BasicTurnState::UpdateCurrentColorThatCanBePlayed(
 	const Color& color)
 {
 	if (color == Color::Any)
@@ -72,7 +72,7 @@ void DefaultTurnState::UpdateCurrentColorThatCanBePlayed(
 	}
 }
 
-void DefaultTurnState::AddAllColors()
+void BasicTurnState::AddAllColors()
 {
 	for (int i = 0; i < static_cast<int>(Color::Count); i++)
 	{
@@ -80,12 +80,12 @@ void DefaultTurnState::AddAllColors()
 	}
 }
 
-void DefaultTurnState::UpdateCurrentActionThatCanBePlayed(const CardAction& action)
+void BasicTurnState::UpdateCurrentActionThatCanBePlayed(const CardAction& action)
 {
 	CardActThatCanBePlayed.push_back(action);
 }
 
-void DefaultTurnState::ClearAllCurrentVariables()
+void BasicTurnState::ClearAllCurrentVariables()
 {
 	ColorsThatCanBePlayed.clear();
 	CardActThatCanBePlayed.clear();

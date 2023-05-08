@@ -32,29 +32,26 @@ std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
     assert(possibleStates.size() > 0,
         "Before starting the turns, you need to initialize the player states");
     printf("\nIt's %s turn!", GetName());
-    SelectState(turnAction);
-    return possibleStates[currentState]->PlayTurn();
+    std::unique_ptr<IPlayerState>& stateSelected = SelectState(turnAction);
+    return stateSelected->PlayTurn();
 }
 
-void Player::SelectState(std::vector<TurnAction> turnAction)
+std::unique_ptr<IPlayerState>& Player::SelectState(std::vector<TurnAction> turnAction)
 {
     if (GotJumped(turnAction))
     {
-        currentState = 1;
-        return;
+        return SelectStateClass<GotJumpedState>();
     }
     if (ShouldBuyMultipleCard(turnAction))
     {
         *unoWasCalledOutPtr = false;
-        currentState = 2;
-        return;
+        return SelectStateClass<MustBuyState>();
     }
     if (sharedPtrCurrentCards->size() == 1 && *unoWasCalledOutPtr == false)
     {
-        currentState = 3;
-        return;
+        return SelectStateClass<UnoWasNotCalledState>();
     }
-    currentState = 0;
+    return SelectStateClass<DefaultState>();
 }
 
 bool Player::GotJumped(std::vector<TurnAction> turnAction)
