@@ -2,7 +2,6 @@
 #include <optional>
 #include <vector>
 #include "../../Cards/Card.h"
-#include "../../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 
 class IPlayerActionsThatCanBeTaken
 {

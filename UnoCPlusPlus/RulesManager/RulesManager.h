@@ -1,9 +1,10 @@
 #pragma once
-#include <iostream>
-#include <vector>
 #include <optional>
-#include "../Cards/Card.h"
-#include "TurnAction/TurnAction.h"
+#include <memory>
+#include <vector>
+#include "IRulesForTurnDelegate/IRulesForTurnDelegate.h"
+#include "IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "RulesManagerStates/IRulesState.h"
 #include "RulesManagerStates/DefaultTurnState/FirstTurnState/FirstTurnState.h"
 #include "RulesManagerStates/DefaultTurnState/DefaultTurnState.h"
 #include "RulesManagerStates/DefaultTurnState/JumpTurnState/JumpTurnState.h"
@@ -11,7 +12,7 @@
 #include "RulesManagerStates/DefaultTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
 #include "RulesManagerStates/DefaultTurnState/PlusFourCardsState/PlusFourCardsState.h"
 
-class RulesManager
+class RulesManager : public IRulesForTurnDelegate, public IRulesForPlayerDataSource
 {
 private:
 	int numberOfCardsThatStacked = 0;
@@ -23,13 +24,13 @@ private:
 public:
 	RulesManager();
 
-	//todo separate for turn manager actions
-	void NewCardOnTable(Card currentTableCard);
-	void NoNewCardOnTable();
-	const std::vector<TurnAction> GetCurrentTurnActionsAvailable();
+	//IRulesForTurnManagerDelegate
+	void NewCardOnTable(Card currentTableCard) override;
+	void NoNewCardOnTable() override;
+	const std::vector<TurnAction> GetCurrentTurnActionsAvailable() override;
 
-	//todo serparate for player actions
-	bool CanCardBePlayed(const Card& card);
-	int GetNumberOfCardsToBeBought();
+	//IRulesForPlayerDataSource
+	bool CanCardBePlayed(const Card& card) override;
+	int GetNumberOfCardsToBeBought() override;
 };
 

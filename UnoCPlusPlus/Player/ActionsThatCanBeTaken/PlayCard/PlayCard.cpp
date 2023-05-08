@@ -2,7 +2,7 @@
 
 std::optional<Card> PlayCard::TakeAction()
 {
-	Card cardToPlay = CurrentCards[CardIndexToPlay];
-	CurrentCards.erase(CurrentCards.begin() + CardIndexToPlay);
+	Card cardToPlay = CurrentCards->at(CardIndexToPlay);
+	CurrentCards->erase(CurrentCards->begin() + CardIndexToPlay);
 	return cardToPlay;
 }

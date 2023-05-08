@@ -2,14 +2,17 @@
 #include <vector>
 #include <memory>
 #include "../IPlayerState.h"
-#include "../../../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 #include "../../ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
+#include "../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
 class MustBuyState : public IPlayerState
 {
 private:
-	ITurnManagerDelegate* Del;
-	std::vector<Card>& CurrentCards;
+	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
+	std::shared_ptr<IRulesForPlayerDataSource> RulesDataSource;
+
+	std::shared_ptr<std::vector<Card>> CurrentCards;
 
 	void PrintCard(const Card& cardToPrint);
 	void PrintActionNumber(int actionNumber);
@@ -17,9 +20,11 @@ private:
 	const int InputActionToTake();
 
 public:
-	MustBuyState(ITurnManagerDelegate* del,
-		std::vector<Card>& currentCards) :
-		Del{ del },
+	MustBuyState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
+		std::shared_ptr<std::vector<Card>> currentCards) :
+		CardsManagerDel{ cardsManagerDel },
+		RulesDataSource{ rulesDataSource },
 		CurrentCards{ currentCards }
 	{};
 

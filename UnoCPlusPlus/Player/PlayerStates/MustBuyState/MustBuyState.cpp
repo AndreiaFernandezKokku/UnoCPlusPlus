@@ -7,21 +7,21 @@ std::optional<Card> MustBuyState::PlayTurn()
 {
 	PossibleActions.clear();
 
-	for (int i = 0; i < CurrentCards.size(); i++)
+	for (int i = 0; i < CurrentCards->size(); i++)
 	{
-		PrintCard(CurrentCards[i]);
-		if (!Del->CanCardBePlayed(CurrentCards[i])) continue;
+		PrintCard(CurrentCards->at(i));
+		if (!RulesDataSource->CanCardBePlayed(CurrentCards->at(i))) continue;
 		PrintActionNumber(PossibleActions.size());
 		PossibleActions.emplace_back(
 			std::make_unique<PlayCard>(CurrentCards, i));
 	}
 	if (!CanPlayAnyCard())
 	{
-		int numOfCardsToBuy = Del->NumberOfCardsToBeBought();
+		int numOfCardsToBuy = RulesDataSource->GetNumberOfCardsToBeBought();
 		printf("\n Buy %i cards", numOfCardsToBuy);
 		PrintActionNumber(PossibleActions.size());
 		PossibleActions.emplace_back(
-			std::make_unique<BuyCard>(Del, CurrentCards, numOfCardsToBuy));
+			std::make_unique<BuyCard>(CardsManagerDel, CurrentCards, numOfCardsToBuy));
 	}
 
 	return PossibleActions[InputActionToTake()]->TakeAction();;

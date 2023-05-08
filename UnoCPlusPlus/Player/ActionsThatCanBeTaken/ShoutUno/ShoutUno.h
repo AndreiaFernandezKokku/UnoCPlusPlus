@@ -1,12 +1,13 @@
 #pragma once
 #include "../IPlayerActionsThatCanBeTaken.h"
+#include <memory>
 
 class ShoutUno : public IPlayerActionsThatCanBeTaken
 {
-	bool* UnoCallOut;
+	std::shared_ptr<bool> UnoCallOut;
 
 public:
-	ShoutUno(bool* unoWasCalledOut) :
+	ShoutUno(std::shared_ptr<bool> unoWasCalledOut) :
 		IPlayerActionsThatCanBeTaken{ true },
 		UnoCallOut{ unoWasCalledOut }
 	{};
