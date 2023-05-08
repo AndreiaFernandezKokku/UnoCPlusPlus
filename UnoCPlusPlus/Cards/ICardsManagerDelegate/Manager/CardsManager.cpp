@@ -1,6 +1,13 @@
 #include "CardsManager.h"
-#include "../Importer/Importer.h"
-#include "../../Utilities/Header/RandomUtility.h"
+#include "../../Importer/Importer.h"
+#include "../../../Utilities/Header/RandomUtility.h"
+#include <cassert>
+
+void CardsManager::Initialize()
+{
+	PopulateDeckList();
+	ShuffleDeckList();
+}
 
 void CardsManager::PopulateDeckList()
 {
@@ -13,7 +20,22 @@ void CardsManager::ShuffleDeckList()
 	RandomUtility::ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
 }
 
-void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace)
+void CardsManager::PlaceInitialCardsInVector(
+	std::vector<Card>&& vectorToPlace)
+{
+	assert(deck.size() >= INITIAL_CARDS,
+		"You must initialize the deck with cards enough to give to the players");
+	if (!DoesDeckHaveEnoughCardsToSend(INITIAL_CARDS)) return;
+
+	vectorToPlace.insert(vectorToPlace.end(),
+	std::make_move_iterator(deck.begin()),
+	std::make_move_iterator(deck.begin() + INITIAL_CARDS));
+
+	deck.erase(deck.begin(), deck.begin() + INITIAL_CARDS);
+}
+
+void CardsManager::PlaceOneCardFromDeckInVector(
+	std::vector<Card>&& vectorToPlace)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(1)) return;
 
@@ -21,7 +43,8 @@ void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace
 	deck.pop_back();
 }
 
-void CardsManager::PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace,
+void CardsManager::PlaceAmountOfCardsFromDeckInVector(
+	std::vector<Card>&& vectorToPlace,
 	int amount)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(amount)) return;

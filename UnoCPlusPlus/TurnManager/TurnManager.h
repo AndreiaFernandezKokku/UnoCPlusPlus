@@ -1,17 +1,15 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../Player/Manager/PlayersManager.h"
-#include "../Cards/Manager/CardsManager.h"
-#include "../RulesManager/RulesManager.h"
-#include "ITurnManagerDelegate/ITurnManagerDelegate.h"
+#include "../IPlayersManagerDelegate/IPlayersManagerDelegate.h"
+#include "../RulesManager/IRulesForTurnDelegate/IRulesForTurnDelegate.h"
+#include "../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
-class TurnManager : public ITurnManagerDelegate
+class TurnManager
 {
-	const int INITIAL_CARDS = 7;
-	std::unique_ptr<PlayersManager> playersManager;
-	std::unique_ptr<CardsManager> cardsManager;
-	RulesManager rulesManager;
+	std::shared_ptr<IPlayersManagerDelegate> playersManagerDel;
+	std::shared_ptr<ICardsManagerDelegate> cardsManagerDel;
+	std::shared_ptr<IRulesForTurnDelegate> rulesManagerDel;
 	bool moveForwards = true;
 	
 	bool IsThereAnyPlayerWithZeroCards();
@@ -21,7 +19,13 @@ class TurnManager : public ITurnManagerDelegate
 	void PrintCurrentTableCard();
 
 public:
-	TurnManager();
+	TurnManager(std::shared_ptr<IPlayersManagerDelegate> playersManager,
+		std::shared_ptr<ICardsManagerDelegate> cardsManager,
+		std::shared_ptr<IRulesForTurnDelegate> rulesManager) :
+		playersManagerDel{ playersManager },
+		cardsManagerDel{ cardsManager },
+		rulesManagerDel{ rulesManager }
+	{};
 	void SetupForFirstTurn();
 	void StartTurns();
 };

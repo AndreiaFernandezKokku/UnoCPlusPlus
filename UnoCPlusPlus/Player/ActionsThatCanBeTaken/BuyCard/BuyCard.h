@@ -1,16 +1,21 @@
 #pragma once
 #include "../IPlayerActionsThatCanBeTaken.h"
+#include <memory>
+#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
+
 class BuyCard : public IPlayerActionsThatCanBeTaken
 {
-	ITurnManagerDelegate* Del;
-	std::vector<Card>& CurrentCards;
+private:
+	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
+	std::shared_ptr<std::vector<Card>> CurrentCards;
 	const int NumOfCardsToBeBought;
 
 public:
-	BuyCard(ITurnManagerDelegate* del, std::vector<Card>& currentCards, 
+	BuyCard(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel, 
+		std::shared_ptr<std::vector<Card>> currentCards,
 		const int numOfCardsToBuy) :
 		IPlayerActionsThatCanBeTaken{ false },
-		Del{ del },
+		CardsManagerDel{ cardsManagerDel },
 		CurrentCards{ currentCards },
 		NumOfCardsToBeBought{ numOfCardsToBuy }
 	{};

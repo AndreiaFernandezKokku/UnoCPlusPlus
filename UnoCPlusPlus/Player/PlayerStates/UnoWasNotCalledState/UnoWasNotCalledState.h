@@ -1,18 +1,18 @@
 #pragma once
 #include "../IPlayerState.h"
 #include <vector>
-#include "../../../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
+#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
 class UnoWasNotCalledState : public IPlayerState
 {
 public:
-	ITurnManagerDelegate* Del;
-	std::vector<Card>& CurrentCards;
+	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
+	std::shared_ptr<std::vector<Card>> CurrentCards;
 
 public:
-	UnoWasNotCalledState(ITurnManagerDelegate* del,
-	std::vector<Card>& currentCards) :
-		Del{ del },
+	UnoWasNotCalledState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+	std::shared_ptr<std::vector<Card>> currentCards) :
+		CardsManagerDel{ cardsManagerDel },
 		CurrentCards{ currentCards }
 	{};
 

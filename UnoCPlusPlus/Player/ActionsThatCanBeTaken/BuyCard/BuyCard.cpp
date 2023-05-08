@@ -4,11 +4,13 @@ std::optional<Card> BuyCard::TakeAction()
 {
 	if (NumOfCardsToBeBought > 1)
 	{
-		Del->PlaceAmountOfDeckCardsInVector(CurrentCards, NumOfCardsToBeBought);
+		CardsManagerDel->
+			PlaceAmountOfCardsFromDeckInVector(
+				std::move(*CurrentCards), NumOfCardsToBeBought);
 	}
 	else
 	{
-		Del->PlaceOneDeckCardInVector(CurrentCards);
+		CardsManagerDel->PlaceOneCardFromDeckInVector(std::move(*CurrentCards));
 	}
 	return std::nullopt;
 }

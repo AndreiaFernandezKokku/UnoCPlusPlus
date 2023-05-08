@@ -1,16 +1,26 @@
 #include "Player.h"
 #include <cassert>
 
-void Player::InitializeStates(ITurnManagerDelegate* deleg)
+void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+        std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
 {
+    sharedPtrCurrentCards = std::make_shared<std::vector<Card>>();
+    unoWasCalledOutPtr = std::make_shared<bool>(false);
+    cardsManagerDel->PlaceInitialCardsInVector(std::move(*sharedPtrCurrentCards));
+
     possibleStates.emplace_back(
-        std::make_unique<DefaultState>(deleg, currentCards, &unoWasCalledOut));
+        std::make_unique<DefaultState>(cardsManagerDel, 
+        rulesDataSource, sharedPtrCurrentCards, unoWasCalledOutPtr));
+
     possibleStates.emplace_back(
         std::make_unique<GotJumpedState>());
+
     possibleStates.emplace_back(
-        std::make_unique<MustBuyState>(deleg, currentCards));
+        std::make_unique<MustBuyState>(cardsManagerDel,
+        rulesDataSource, sharedPtrCurrentCards));
+
     possibleStates.emplace_back(
-        std::make_unique<UnoWasNotCalledState>(deleg, currentCards));
+        std::make_unique<UnoWasNotCalledState>(cardsManagerDel, sharedPtrCurrentCards));
 }
 
 std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
@@ -31,11 +41,11 @@ void Player::SelectState(std::vector<TurnAction> turnAction)
     }
     if (ShouldBuyMultipleCard(turnAction))
     {
-        unoWasCalledOut = false;
+        *unoWasCalledOutPtr = false;
         currentState = 2;
         return;
     }
-    if (currentCards.size() == 1 && unoWasCalledOut == false)
+    if (sharedPtrCurrentCards->size() == 1 && *unoWasCalledOutPtr == false)
     {
         currentState = 3;
         return;
@@ -68,20 +78,15 @@ const char* Player::GetName()
     return name->c_str();
 }
 
-std::vector<Card>& Player::GetCurrentCards()
-{
-    return currentCards;
-}
-
 const int Player::GetCurrentCardsSize()
 {
-    return currentCards.size();
+    return sharedPtrCurrentCards->size();
 }
 
 void Player::PrintCurrentCards()
 {
     printf("Player %s cards are: \n", GetName());
-    for (const Card card : currentCards)
+    for (const Card card : *sharedPtrCurrentCards)
     {
         printf("| %s , %s | \n",
             ColorToString[static_cast<int>(card.color)],

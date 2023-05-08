@@ -2,15 +2,18 @@
 #include <vector>
 #include <memory>
 #include "../IPlayerState.h"
-#include "../../../TurnManager/ITurnManagerDelegate/ITurnManagerDelegate.h"
 #include "../../ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
+#include "../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
 class DefaultState : public IPlayerState
 {
 private:
-	ITurnManagerDelegate* Del;
-	std::vector<Card>& CurrentCards;
-	bool* HasCalledUno;
+	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
+	std::shared_ptr<IRulesForPlayerDataSource> RulesDataSource;
+
+	std::shared_ptr<std::vector<Card>> CurrentCards;
+	std::shared_ptr<bool> HasCalledUno;
 
 	void PopulatePossibleActions();
 	void PrintCard(const Card& cardToPrint);
@@ -20,10 +23,12 @@ private:
 	const int InputActionToTake();
 
 public:
-	DefaultState(ITurnManagerDelegate* del, 
-		std::vector<Card>& currentCards,
-		bool* hasCalledUno) :
-		Del{ del },
+	DefaultState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
+		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
+		std::shared_ptr<std::vector<Card>> currentCards,
+		std::shared_ptr<bool> hasCalledUno) :
+		CardsManagerDel{ cardsManagerDel },
+		RulesDataSource{ rulesDataSource },
 		CurrentCards{ currentCards },
 		HasCalledUno{ hasCalledUno }
 	{};
