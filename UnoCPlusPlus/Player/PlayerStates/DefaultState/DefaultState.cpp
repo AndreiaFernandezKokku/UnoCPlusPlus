@@ -43,9 +43,7 @@ void DefaultState::PopulatePossibleActions()
 
 void DefaultState::PrintCard(const Card& cardToPrint)
 {
-	printf("\n| %s , %s |",
-		ColorToString[static_cast<int>(cardToPrint.color)],
-		CardActionToString[static_cast<int>(cardToPrint.action)]);
+	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
 }
 
 void DefaultState::PrintActionNumber(int actionNumber)

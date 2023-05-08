@@ -1,4 +1,5 @@
 #include "TurnManager.h"
+#include <cassert>
 
 void TurnManager::SetupForFirstTurn()
 {
@@ -91,8 +92,11 @@ void TurnManager::UpdatePlayerIndex(int& playerIndex)
 
 void TurnManager::PrintCurrentTableCard()
 {
-	printf("\nCurrent table card: \n| %s , %s | \n",
-	ColorToString[static_cast<int>(cardsManagerDel->GetLastCardFromTable()->color)],
-	CardActionToString[static_cast<int>(cardsManagerDel->GetLastCardFromTable()->action)]);
+	std::optional<Card> lastTableCard = cardsManagerDel->GetLastCardFromTable();
+	assert(lastTableCard.has_value(),
+		"table should not be empty at this time in execution.");
+
+	printf("\nCurrent table card: \n%s\n", 
+		Card::CardDataString(lastTableCard.value()).c_str());
 }
 

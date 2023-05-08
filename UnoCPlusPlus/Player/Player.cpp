@@ -92,8 +92,6 @@ void Player::PrintCurrentCards()
     printf("Player %s cards are: \n", GetName());
     for (const Card card : *sharedPtrCurrentCards)
     {
-        printf("| %s , %s | \n",
-            ColorToString[static_cast<int>(card.color)],
-            CardActionToString[static_cast<int>(card.action)]);
+        printf("%s\n", Card::CardDataString(card).c_str());
     }
 }
