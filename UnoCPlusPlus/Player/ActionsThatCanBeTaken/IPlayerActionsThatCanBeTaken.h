@@ -14,5 +14,8 @@ protected:
 public:
 	const bool IsStackableAction;
 	virtual std::optional<Card> TakeAction() = 0;
+	
+	//Stopping wrong delete
+	virtual ~IPlayerActionsThatCanBeTaken() = default;
 };
 

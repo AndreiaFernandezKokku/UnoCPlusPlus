@@ -34,5 +34,8 @@ public:
 	{};
 
 	std::optional<Card> PlayTurn() override;
+
+	//Stopping wrong delete
+	~DefaultState() = default;
 };
 

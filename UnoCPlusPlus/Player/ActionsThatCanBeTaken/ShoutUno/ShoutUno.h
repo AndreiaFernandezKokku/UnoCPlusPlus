@@ -13,5 +13,8 @@ public:
 	{};
 
 	std::optional<Card> TakeAction() override;
+
+	//Stopping wrong delete
+	~ShoutUno() = default;
 };
 

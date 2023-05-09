@@ -18,5 +18,8 @@ public:
 
 	void NewCardOnTable(Card currentTableCard);
 	void NoNewCardOnTable();
+
+	//Stopping wrong delete
+	~PlusFourCardsState() = default;
 };
 

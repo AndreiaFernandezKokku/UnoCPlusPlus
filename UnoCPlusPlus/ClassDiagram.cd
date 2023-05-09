@@ -10,7 +10,7 @@
   <Class Name="DefaultTurnState" Collapsed="true">
     <Position X="3.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\DefaultTurnState\DefaultTurnState.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,28 +24,28 @@
   <Class Name="MustBuyState" Collapsed="true">
     <Position X="3" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAQCAAgAAACCAAiAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAQCAAgAAACCAAiAAEAAAA=</HashCode>
       <FileName>Player\PlayerStates\MustBuyState\MustBuyState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DefaultState" Collapsed="true">
     <Position X="5.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAABAAAAAAAAAAQAABwAAAiCAAiAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAABIAAAAAAAAAQAABwAAAiCAAiAAAAAAA=</HashCode>
       <FileName>Player\PlayerStates\DefaultState\DefaultState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GotJumpedState" Collapsed="true">
     <Position X="7.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Player\PlayerStates\GotJumpedState\GotJumpedState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IPlayerState" Collapsed="true">
     <Position X="4" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAEAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Player\PlayerStates\IPlayerState.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,56 +66,56 @@
   <Class Name="PlusFourCardsState" Collapsed="true">
     <Position X="10" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAggAAAAAAAAAEAAAAIAABAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAigAAAAAAAAAEAAAAIAABAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IRulesState" Collapsed="true">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACgAAAAAAAAAAAEAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAACgAAAAAAAAAAAEAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\IRulesState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlusTwoCardsState" Collapsed="true">
     <Position X="12.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAggAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAggAAAAAAAAAAAAAAAAABABIAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\PlusTwoCardsState\PlusTwoCardsState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReverseTurnState" Collapsed="true">
     <Position X="1" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\ReverseTurnState\ReverseTurnState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FirstTurnState" Collapsed="true">
     <Position X="5.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgACAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAgACAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\FirstTurnState\FirstTurnState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JumpTurnState" Collapsed="true">
     <Position X="7.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAABAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\JumpTurnState\JumpTurnState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlayCard" Collapsed="true">
     <Position X="0.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAQQAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAEAAAAAAQQAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Player\ActionsThatCanBeTaken\PlayCard\PlayCard.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BuyCard" Collapsed="true">
     <Position X="3" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAoAAAAAAAAAAAAAAQQAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAoAAAAAAAAAAAAAAQQAAAAAAACAABAAAAAAA=</HashCode>
       <FileName>Player\ActionsThatCanBeTaken\BuyCard\BuyCard.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -136,7 +136,7 @@
   <Class Name="IPlayerActionsThatCanBeTaken" Collapsed="true">
     <Position X="3" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Player\ActionsThatCanBeTaken\IPlayerActionsThatCanBeTaken.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -150,7 +150,7 @@
   <Class Name="Player" Collapsed="true">
     <Position X="14.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAABAAAEBIAAEAAAAgAIEAAAAAIEQAAAAAAAAQAABAA=</HashCode>
+      <HashCode>QAABAAAEBIAAAAAAAgAIEAAAAAIEQAAAAAAAAQAARAA=</HashCode>
       <FileName>Player\Player.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -164,14 +164,14 @@
   <Class Name="BasicTurnState" Collapsed="true">
     <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAICgBAAQAAAEAAAkAAAAAABAAAQAAAABAAEAAAg=</HashCode>
+      <HashCode>AAAAAICgBAAQAAEEAgAkAAAAAABAAAQAAAABAAEAAAg=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\BasicTurnState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ShoutUno" Collapsed="true">
     <Position X="5.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAQAAAA=</HashCode>
       <FileName>Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -185,7 +185,7 @@
   <Class Name="UnoWasNotCalledState" Collapsed="true">
     <Position X="0.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAAAAAIAAAAAQAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.h</FileName>
     </TypeIdentifier>
   </Class>

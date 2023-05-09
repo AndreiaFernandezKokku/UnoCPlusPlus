@@ -8,5 +8,8 @@
 /// </summary>
 class DefaultTurnState : public BasicTurnState
 {
+public:
+	//Stopping wrong delete
+	~DefaultTurnState() = default;
 };
 

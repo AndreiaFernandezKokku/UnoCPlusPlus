@@ -15,5 +15,8 @@ public:
 	{};
 
 	std::optional<Card> TakeAction() override;
+
+	//Stopping wrong delete
+	~PlayCard() = default;
 };
 
