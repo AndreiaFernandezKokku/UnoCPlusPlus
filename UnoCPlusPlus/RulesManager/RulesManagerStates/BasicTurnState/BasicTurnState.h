@@ -17,9 +17,16 @@ protected:
 	void UpdateCurrentActionThatCanBePlayed(const CardAction& action);
 	void ClearAllCurrentVariables();
 
+
 public: 
 	std::vector<TurnAction> GetCurrentTurnActionsAvailable() override;
 	void NewCardOnTable(Card currentTableCard) override;
 	void NoNewCardOnTable() override;
 	bool CanCardBePlayed(const Card& card) override;
+
+	BasicTurnState() = default;
+	//Stopping shallow copy
+	BasicTurnState(const BasicTurnState&) = delete;
+	//Stopping wrong delete
+	~BasicTurnState() = default;
 };

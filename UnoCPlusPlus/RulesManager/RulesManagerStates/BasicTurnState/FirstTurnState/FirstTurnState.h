@@ -7,5 +7,8 @@ class FirstTurnState : public BasicTurnState
 public:
 	void NewCardOnTable(Card currentTableCard) override;
 	void NoNewCardOnTable() override;
+
+	//Stopping wrong delete
+	~FirstTurnState() = default;
 };
 
