@@ -1,9 +1,9 @@
-#include "MustBuyState.h"
+#include "MustBuyFromTableState.h"
 #include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
 #include "../../../Utilities/Header/InputVariablesManager.h"
+#include "../../ActionsThatCanBeTaken/BuyFromTableCard/BuyFromTableCard.h"
 
-std::optional<Card> MustBuyState::PlayTurn()
+std::optional<Card> MustBuyFromTableState::PlayTurn()
 {
 	PossibleActions.clear();
 
@@ -17,32 +17,33 @@ std::optional<Card> MustBuyState::PlayTurn()
 	}
 	if (!CanPlayAnyCard())
 	{
-		int numOfCardsToBuy = RulesDataSource->GetNumberOfDeckCardsToBeBought();
-		printf("\n Buy %i cards from deck", numOfCardsToBuy);
+		int numOfCardsToBuy = RulesDataSource->GetNumberOfTableCardsToBeBought();
+		printf("\n Buy %i cards from table", numOfCardsToBuy);
 		PrintActionNumber(PossibleActions.size());
 		PossibleActions.emplace_back(
-			std::make_unique<BuyCard>(CardsManagerDel, CurrentCards, numOfCardsToBuy));
+			std::make_unique<BuyFromTableCard>(CardsManagerDel, 
+			CurrentCards, numOfCardsToBuy));
 	}
 
 	return PossibleActions[InputActionToTake()]->TakeAction();;
 }
 
-void MustBuyState::PrintCard(const Card & cardToPrint)
+void MustBuyFromTableState::PrintCard(const Card& cardToPrint)
 {
 	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
 }
 
-void MustBuyState::PrintActionNumber(int actionNumber)
+void MustBuyFromTableState::PrintActionNumber(int actionNumber)
 {
 	printf(" [%i] ", actionNumber);
 }
 
-bool MustBuyState::CanPlayAnyCard()
+bool MustBuyFromTableState::CanPlayAnyCard()
 {
 	return PossibleActions.size() > 0;
 }
 
-const int MustBuyState::InputActionToTake()
+const int MustBuyFromTableState::InputActionToTake()
 {
 	InputVariablesManager inputManager = InputVariablesManager();
 	const int index = inputManager.GetIntegerInput("\n Select action to take! ",
@@ -50,3 +51,5 @@ const int MustBuyState::InputActionToTake()
 
 	return index;
 }
+
+

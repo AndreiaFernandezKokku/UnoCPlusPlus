@@ -27,7 +27,7 @@ void DefaultState::PopulatePossibleActions()
 	if (!CanPlayAnyCard())
 	{
 		*HasCalledUno = false;
-		printf("\n Buy 1 card");
+		printf("\n Buy 1 card from deck");
 		PrintActionNumber(PossibleActions.size());
 		PossibleActions.emplace_back(
 			std::make_unique<BuyCard>(CardsManagerDel, CurrentCards, 1));

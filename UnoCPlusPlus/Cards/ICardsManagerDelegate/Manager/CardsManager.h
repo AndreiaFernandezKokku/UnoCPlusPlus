@@ -11,7 +11,7 @@ class CardsManager : public ICardsManagerDelegate
 	void PopulateDeckList();
 	void ShuffleDeckList();
 	bool DoesDeckHaveEnoughCardsToSend(int amountToSend);
-	bool DoesTableHaveEnoughCardsToSendToDeck(int amountToSend);
+	bool DoesTableHaveEnoughCardsToSend(int amountToSend);
 	void SendCardsFromTableToDeck();
 
 public:
@@ -20,6 +20,8 @@ public:
 	void PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace) override;
 	void PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace) override;
 	void PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace,
+		int amount) override;
+	void PlaceAmountOfCardsFromTableInVector(std::vector<Card>& vectorToPlace,
 		int amount) override;
 
 	const std::optional<Card> GetLastCardFromTable() override;

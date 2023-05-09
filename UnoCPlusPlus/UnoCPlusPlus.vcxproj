@@ -128,9 +128,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.cpp" />
+    <ClCompile Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.cpp" />
     <ClCompile Include="Player\PlayerStates\MustBuyState\MustBuyState.cpp" />
     <ClCompile Include="Player\PlayerStates\DefaultState\DefaultState.cpp" />
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp" />
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\ReverseTurnState\ReverseTurnState.cpp" />
@@ -153,7 +156,10 @@
     <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h" />
     <ClInclude Include="Cards\ICardsManagerDelegate\ICardsManagerDelegate.h" />
+    <ClInclude Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.h" />
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\DefaultTurnState\DefaultTurnState.h" />
     <ClInclude Include="PlayersManager\IPlayersManagerDataSource\IPlayersManagerDataSource.h" />
     <ClInclude Include="Player\PlayerStates\MustBuyState\MustBuyState.h" />

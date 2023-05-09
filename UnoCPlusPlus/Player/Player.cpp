@@ -1,7 +1,6 @@
 #include "Player.h"
 #include <cassert>
 
-
 void Player::InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel)
 {
     sharedPtrCurrentCards = std::make_shared<std::vector<Card>>();
@@ -25,6 +24,10 @@ void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManage
 
     possibleStates.emplace_back(
         std::make_unique<UnoWasNotCalledState>(cardsManagerDel, sharedPtrCurrentCards));
+
+    possibleStates.emplace_back(
+        std::make_unique<MustBuyFromTableState>(cardsManagerDel, 
+        rulesDataSource, sharedPtrCurrentCards));
 }
 
 std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)
@@ -47,6 +50,11 @@ std::unique_ptr<IPlayerState>& Player::SelectState(std::vector<TurnAction> turnA
         *unoWasCalledOutPtr = false;
         return SelectStateClass<MustBuyState>();
     }
+    if (ShouldBuyMultipleCardFromTable(turnAction))
+    {
+        *unoWasCalledOutPtr = false;
+        return SelectStateClass<MustBuyFromTableState>();
+    }
     if (sharedPtrCurrentCards->size() == 1 && *unoWasCalledOutPtr == false)
     {
         return SelectStateClass<UnoWasNotCalledState>();
@@ -68,6 +76,16 @@ bool Player::ShouldBuyMultipleCard(std::vector<TurnAction> turnAction)
 {
     if (std::find(turnAction.begin(), turnAction.end(),
         TurnAction::BuyMultipleCard) != turnAction.end())
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Player::ShouldBuyMultipleCardFromTable(std::vector<TurnAction> turnAction)
+{
+    if (std::find(turnAction.begin(), turnAction.end(),
+        TurnAction::BuyMultipleTableCard) != turnAction.end())
     {
         return true;
     }

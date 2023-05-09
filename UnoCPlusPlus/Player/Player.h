@@ -11,6 +11,7 @@
 #include "PlayerStates/GotJumpedState/GotJumpedState.h"
 #include "PlayerStates/MustBuyState/MustBuyState.h"
 #include "PlayerStates/UnoWasNotCalledState/UnoWasNotCalledState.h"
+#include "PlayerStates/MustBuyFromTableState/MustBuyFromTableState.h"
 
 class Player
 {
@@ -27,6 +28,7 @@ private:
 	std::unique_ptr<IPlayerState>& SelectState(std::vector<TurnAction> turnAction);
 	bool GotJumped(std::vector<TurnAction> turnAction);
 	bool ShouldBuyMultipleCard(std::vector<TurnAction> turnAction);
+	bool ShouldBuyMultipleCardFromTable(std::vector<TurnAction> turnAction);
 
 	template<typename stateClass>
 	std::unique_ptr<IPlayerState>& SelectStateClass()
