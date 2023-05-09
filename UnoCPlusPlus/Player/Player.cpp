@@ -7,7 +7,7 @@ void Player::InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsMan
     sharedPtrCurrentCards = std::make_shared<std::vector<Card>>();
     unoWasCalledOutPtr = std::make_shared<bool>(false);
 
-    cardsManagerDel->PlaceInitialCardsInVector(std::move(*sharedPtrCurrentCards));
+    cardsManagerDel->PlaceInitialCardsInVector(*sharedPtrCurrentCards);
 }
 
 void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,

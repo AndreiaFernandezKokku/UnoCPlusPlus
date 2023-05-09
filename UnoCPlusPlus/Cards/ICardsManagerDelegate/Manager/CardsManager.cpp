@@ -21,7 +21,7 @@ void CardsManager::ShuffleDeckList()
 	RandomUtility::ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
 }
 
-void CardsManager::PlaceInitialCardsInVector(std::vector<Card>&& vectorToPlace)
+void CardsManager::PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace)
 {
 	assert(deck.size() >= INITIAL_CARDS,
 		"You must initialize the deck with cards enough to give to the players");
@@ -33,7 +33,7 @@ void CardsManager::PlaceInitialCardsInVector(std::vector<Card>&& vectorToPlace)
 	deck.erase(deck.begin(), deck.begin() + INITIAL_CARDS);
 }
 
-void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>&& vectorToPlace)
+void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(1)) return;
 
@@ -41,7 +41,7 @@ void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>&& vectorToPlac
 	deck.pop_back();
 }
 
-void CardsManager::PlaceAmountOfCardsFromDeckInVector(std::vector<Card>&& vectorToPlace,
+void CardsManager::PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace,
 	int amount)
 {
 	if (!DoesDeckHaveEnoughCardsToSend(amount)) return;
@@ -94,7 +94,10 @@ bool CardsManager::DoesTableHaveEnoughCardsToSendToDeck(int amountToSend)
 
 void CardsManager::SendCardsFromTableToDeck()
 {
-	printf("Sending cards from table to deck. \n");
+	printf("Sending cards from table to deck. \nBefore: \n");
+	PrintDeckAmountOfCards();
+	PrintTableAmountOfCards();
+
 	int vectorEndPlusMinTableCards = 1 + MIN_TABLE_CARDS;
 	deck.insert(deck.end(),
 		std::make_move_iterator(table.begin()),
@@ -103,6 +106,7 @@ void CardsManager::SendCardsFromTableToDeck()
 	table.erase(table.begin(), table.end() - vectorEndPlusMinTableCards);
 
 	ShuffleDeckList();
+	printf("After: \n");
 	PrintDeckAmountOfCards();
 	PrintTableAmountOfCards();
 }

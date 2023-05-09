@@ -54,34 +54,34 @@
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusFourCardsState\PlusFourCardsState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\FirstTurnState\FirstTurnState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\JumpTurnState\JumpTurnState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cards\ICardsManagerDelegate\Manager\CardsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IPlayersManagerDelegate\Manager\PlayersManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoCardsState\PlusTwoCardsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\ReverseTurnState\ReverseTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\FirstTurnState\FirstTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\JumpTurnState\JumpTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayersManager\PlayersManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\BasicTurnState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,9 +134,6 @@
     <ClInclude Include="Cards\ICardsManagerDelegate\ICardsManagerDelegate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IPlayersManagerDelegate\IPlayersManagerDelegate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player\PlayerStates\MustBuyState\MustBuyState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -149,31 +146,10 @@
     <ClInclude Include="Player\PlayerStates\IPlayerState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusFourCardsState\PlusFourCardsState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RulesManager\RulesManagerStates\IRulesState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\PlusTwoCardsState\PlusTwoCardsState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\ReverseTurnState\ReverseTurnState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\FirstTurnState\FirstTurnState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\JumpTurnState\JumpTurnState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cards\ICardsManagerDelegate\Manager\CardsManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IPlayersManagerDelegate\Manager\PlayersManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RulesManager\RulesManagerStates\DefaultTurnState\DefaultTurnState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.h">
@@ -188,5 +164,35 @@
     <ClInclude Include="RulesManager\IRulesForPlayerDataSource\IRulesForPlayerDataSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\DefaultTurnState\DefaultTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersManager\IPlayersManagerDataSource\IPlayersManagerDataSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoCardsState\PlusTwoCardsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\ReverseTurnState\ReverseTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\FirstTurnState\FirstTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\JumpTurnState\JumpTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersManager\PlayersManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\BasicTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

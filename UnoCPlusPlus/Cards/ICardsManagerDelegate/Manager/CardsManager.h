@@ -17,9 +17,9 @@ class CardsManager : public ICardsManagerDelegate
 public:
 	void Initialize();
 
-	void PlaceInitialCardsInVector(std::vector<Card>&& vectorToPlace) override;
-	void PlaceOneCardFromDeckInVector(std::vector<Card>&& vectorToPlace) override;
-	void PlaceAmountOfCardsFromDeckInVector(std::vector<Card>&& vectorToPlace,
+	void PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace) override;
+	void PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace) override;
+	void PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace,
 		int amount) override;
 
 	const std::optional<Card> GetLastCardFromTable() override;
