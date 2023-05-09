@@ -26,11 +26,7 @@ void CardsManager::PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace)
 	assert(deck.size() >= INITIAL_CARDS,
 		"You must initialize the deck with cards enough to give to the players");
 
-	vectorToPlace.insert(vectorToPlace.end(),
-	std::make_move_iterator(deck.begin()),
-	std::make_move_iterator(deck.begin() + INITIAL_CARDS));
-
-	deck.erase(deck.begin(), deck.begin() + INITIAL_CARDS);
+	PlaceAmountOfCardsFromDeckInVector(vectorToPlace, INITIAL_CARDS);
 }
 
 void CardsManager::PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace)
@@ -53,6 +49,25 @@ void CardsManager::PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorT
 	deck.erase(deck.begin(), deck.begin() + amount);
 }
 
+void CardsManager::PlaceAmountOfCardsFromTableInVector(std::vector<Card>& vectorToPlace, 
+	int amount)
+{
+	if (DoesTableHaveEnoughCardsToSend(amount))
+	{
+		for (int i = 0; i < amount; i++)
+		{
+			int cardIndex = RandomUtility::RandRange(0, table.size() - MIN_TABLE_CARDS);
+			vectorToPlace.push_back(table[cardIndex]);
+			table.erase(table.begin() + cardIndex);
+		}
+	}
+	else
+	{
+		printf("Sending cards from deck.\n");
+		PlaceAmountOfCardsFromDeckInVector(vectorToPlace, amount);
+	}
+}
+
 const std::optional<Card> CardsManager::GetLastCardFromTable()
 {
 	if (table.size() <= 0)
@@ -66,7 +81,8 @@ bool CardsManager::DoesDeckHaveEnoughCardsToSend(int amountToSend)
 {
 	if (deck.size() < amountToSend)
 	{
-		if (DoesTableHaveEnoughCardsToSendToDeck(amountToSend))
+		printf("Not enough deck cards to send.\n");
+		if (DoesTableHaveEnoughCardsToSend(amountToSend))
 		{
 			SendCardsFromTableToDeck();
 			return true;
@@ -75,18 +91,18 @@ bool CardsManager::DoesDeckHaveEnoughCardsToSend(int amountToSend)
 		{
 			PrintDeckAmountOfCards();
 			PrintTableAmountOfCards();
-			printf("Not Deck nor table have have enough cards to send. \n");
+			printf("Not Deck nor table have have enough cards to send. \nThe player will not receive the cards.\n");
 			return false;
 		}
 	}
 	return true;
 }
 
-bool CardsManager::DoesTableHaveEnoughCardsToSendToDeck(int amountToSend)
+bool CardsManager::DoesTableHaveEnoughCardsToSend(int amountToSend)
 {
 	if (table.size() <= (amountToSend + MIN_TABLE_CARDS))
 	{
-		printf("Not enough table cards to fill deck. \n");
+		printf("Not enough table cards to send. \n");
 		return false;
 	}
 	return true;
@@ -115,7 +131,6 @@ void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
 {
 	table.push_back(cardToPlaceOnTable);
 }
-
 
 void CardsManager::PrintDeckAmountOfCards()
 {

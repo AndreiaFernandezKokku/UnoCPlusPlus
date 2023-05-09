@@ -84,6 +84,15 @@
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\BasicTurnState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\Importer\Importer.h">
@@ -189,6 +198,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\BasicTurnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

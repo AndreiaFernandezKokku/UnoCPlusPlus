@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Class Name="ICardsManagerDelegate" Collapsed="true">
-    <Position X="3.5" Y="10.5" Width="1.5" />
+    <Position X="3.5" Y="10.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAEAAAAAARAAAAAAIAAAAAAAAAAAAgAIAA=</HashCode>
+      <HashCode>AAAAAAAgABAEAAAAAARAAAAAAIAAAAAAAAAAAAgAIAA=</HashCode>
       <FileName>Cards\ICardsManagerDelegate\ICardsManagerDelegate.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IPlayersManagerDataSource" Collapsed="true">
-    <Position X="0.5" Y="10.5" Width="1.5" />
+    <Position X="0.5" Y="10.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlayersManager\IPlayersManagerDataSource\IPlayersManagerDataSource.h</FileName>
@@ -50,21 +50,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IRulesForPlayerDataSource" Collapsed="true">
-    <Position X="11.5" Y="7.5" Width="1.5" />
+    <Position X="15.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQACAAAAAAAAA=</HashCode>
       <FileName>RulesManager\IRulesForPlayerDataSource\IRulesForPlayerDataSource.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IRulesForTurnDelegate" Collapsed="true">
-    <Position X="8.5" Y="7.5" Width="1.5" />
+    <Position X="12.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACgAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\IRulesForTurnDelegate\IRulesForTurnDelegate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlusFourCardsState" Collapsed="true">
-    <Position X="10" Y="3.25" Width="1.5" />
+    <Position X="10" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAigAAAAAAAAAEAAAAIAABAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.h</FileName>
@@ -78,7 +78,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PlusTwoCardsState" Collapsed="true">
-    <Position X="12.25" Y="3.25" Width="1.5" />
+    <Position X="12.25" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAggAAAAAAAAAAAAAAAAABABIAAAAAAAAAAAAA=</HashCode>
       <FileName>RulesManager\RulesManagerStates\BasicTurnState\PlusTwoCardsState\PlusTwoCardsState.h</FileName>
@@ -120,14 +120,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CardsManager" Collapsed="true">
-    <Position X="3.5" Y="11.75" Width="1.5" />
+    <Position X="3.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgIAAEBQBAAARAAAACAIACgEAAAEAAAAgAIAA=</HashCode>
+      <HashCode>AAAAAAAgABAEBQBAAAREAAACAIACgEAAAEAAAAgAIAA=</HashCode>
       <FileName>Cards\ICardsManagerDelegate\Manager\CardsManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Importer" Collapsed="true">
-    <Position X="16.5" Y="0.5" Width="1.5" />
+    <Position X="19.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Cards\Importer\Importer.h</FileName>
@@ -141,23 +141,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PlayersManager" Collapsed="true">
-    <Position X="0.5" Y="11.75" Width="1.5" />
+    <Position X="0.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEIBAAFAAAAAAEBEAAAAAAQAQAAAQAAAAAAAgAAABAA=</HashCode>
       <FileName>PlayersManager\PlayersManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Player" Collapsed="true">
-    <Position X="14.75" Y="1.5" Width="1.5" />
+    <Position X="21.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAABAAAEBIAAAAAAAgAIEAAAAAIEQAAAAAAAAQAARAA=</HashCode>
+      <HashCode>QAABAAAEBIAAAABAIgAIEAAAAAIEAAAAAAAAAQAARAA=</HashCode>
       <FileName>Player\Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RulesManager" Collapsed="true">
-    <Position X="8.5" Y="8.75" Width="1.5" />
+    <Position X="12.75" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAABACgCAABABAAEAAEAAgAAABAAAAAAAQAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACgCBABABAAEAAEBAAAAABAAAAQACQAAAACAgA=</HashCode>
       <FileName>RulesManager\RulesManager.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -176,72 +176,93 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TurnManager" Collapsed="true">
-    <Position X="14.75" Y="2.5" Width="1.5" />
+    <Position X="17.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAgEiAAAAAAAAAAAAgARAAAgAAAAAAAAQgAEAAAAA=</HashCode>
       <FileName>TurnManager\TurnManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UnoWasNotCalledState" Collapsed="true">
-    <Position X="0.75" Y="5.75" Width="1.5" />
+    <Position X="0.75" Y="5.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAIAAAAAQAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FloatComparer" Collapsed="true">
-    <Position X="14.75" Y="0.5" Width="1.5" />
+    <Position X="17.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Utilities\Header\FloatComparer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="InputVariablesManager" Collapsed="true">
-    <Position X="18.25" Y="0.5" Width="1.5" />
+    <Position X="19.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAAAgAAgAAAAA=</HashCode>
       <FileName>Utilities\Header\InputVariablesManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RandomNameGenerator" Collapsed="true">
-    <Position X="16.5" Y="1.5" Width="1.5" />
+    <Position X="17.75" Y="1.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Utilities\Header\RandomNameGenerator.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RandomUtility" Collapsed="true">
-    <Position X="18.25" Y="1.5" Width="1.5" />
+    <Position X="20" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Utilities\Header\RandomUtility.h</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BuyFromTableCard" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAABAQAQQAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MustBuyFromTableState" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAIAAAAAAAQAgAgAAACCAAiAAAAAAA=</HashCode>
+      <FileName>Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlusTwoDiscardState" Collapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgEAABAAAAAAAAAAAAAABAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="Card" Collapsed="true">
-    <Position X="14.75" Y="3.75" Width="1.5" />
+    <Position X="17.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABABAAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Cards\Card.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Enum Name="CardAction" Collapsed="true">
-    <Position X="14.75" Y="5" Width="1.5" />
+    <Position X="17.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAUEAAEAIQAAQAFBAAAAAgCAAgAAIA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAUEAAEAIQAAQAFBAAAAAgCQAgAAIA=</HashCode>
       <FileName>Cards\CardAction.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Color" Collapsed="true">
-    <Position X="16.5" Y="5" Width="1.5" />
+    <Position X="19.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAACAAAAAAAAAgAAAAAAAAQAAAAAAAAAAAAAADAAAAA=</HashCode>
       <FileName>Cards\Color.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="TurnAction" Collapsed="true">
-    <Position X="18.25" Y="5" Width="1.5" />
+    <Position X="21.25" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAACAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQACAQAAAAA=</HashCode>
       <FileName>RulesManager\TurnAction\TurnAction.h</FileName>
     </TypeIdentifier>
   </Enum>

@@ -11,13 +11,15 @@
 #include "RulesManagerStates/BasicTurnState/ReverseTurnState/ReverseTurnState.h"
 #include "RulesManagerStates/BasicTurnState/PlusTwoCardsState/PlusTwoCardsState.h"
 #include "RulesManagerStates/BasicTurnState/PlusFourCardsState/PlusFourCardsState.h"
+#include "RulesManagerStates/BasicTurnState/PlusTwoDiscardState/PlusTwoDiscardState.h"
 
 class RulesManager : public IRulesForTurnDelegate, public IRulesForPlayerDataSource
 {
 private:
-	int numberOfCardsThatStacked = 0;
+	int numberOfDeckCardsThatStacked = 0;
 	std::vector<std::unique_ptr<IRulesState>> turnStates;
 	int currentStateClassIndex = 0;
+	int numberOfTableCardsThatStacked = 0;
 
 	int GetNewStateIndex(const CardAction& currentCardAction);
 
@@ -33,7 +35,8 @@ private:
 		}
 	}
 
-	void AssertNumberOfCardsStackedIsZero();
+	void AssertNumberOfDeckCardsStackedIsZero();
+	void AssertNumberOfTableCardsStackedIsZero();
 
 public:
 	RulesManager();
@@ -45,6 +48,7 @@ public:
 
 	//IRulesForPlayerDataSource
 	bool CanCardBePlayed(const Card& card) override;
-	int GetNumberOfCardsToBeBought() override;
+	int GetNumberOfDeckCardsToBeBought() override;
+	int GetNumberOfTableCardsToBeBought() override;
 };
 

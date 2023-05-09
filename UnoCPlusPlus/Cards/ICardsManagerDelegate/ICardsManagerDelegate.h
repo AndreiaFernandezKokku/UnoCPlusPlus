@@ -10,6 +10,8 @@ public:
 	virtual void PlaceOneCardFromDeckInVector(std::vector<Card>& vectorToPlace) = 0;
 	virtual void PlaceAmountOfCardsFromDeckInVector(std::vector<Card>& vectorToPlace,
 		int amount) = 0;
+	virtual void PlaceAmountOfCardsFromTableInVector(std::vector<Card>& vectorToPlace,
+		int amount) = 0;
 
 	virtual const std::optional<Card> GetLastCardFromTable() = 0;
 	virtual void PlaceCardOnTable(Card cardToPlaceOnTable) = 0;
