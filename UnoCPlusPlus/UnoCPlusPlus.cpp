@@ -14,7 +14,7 @@ int main()
     std::shared_ptr cardsManager = std::make_shared<CardsManager>(random);
     cardsManager->Initialize();
 
-    std::shared_ptr rulesManager = std::make_shared<RulesManager>();
+    std::shared_ptr rulesManager = std::make_shared<RulesManager>(inputVariables);
     
     std::shared_ptr playersManager = 
         std::make_shared<PlayersManager>(inputVariables, random);

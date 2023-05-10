@@ -15,20 +15,20 @@ void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManage
 {
     possibleStates.emplace_back(
         std::make_unique<DefaultState>(cardsManagerDel, 
-        rulesDataSource, sharedPtrCurrentCards, unoWasCalledOutPtr));
+        rulesDataSource, sharedPtrCurrentCards, unoWasCalledOutPtr, inputUtil));
 
     possibleStates.emplace_back(std::make_unique<GotJumpedState>());
 
     possibleStates.emplace_back(
         std::make_unique<MustBuyState>(cardsManagerDel,
-        rulesDataSource, sharedPtrCurrentCards));
+        rulesDataSource, sharedPtrCurrentCards, inputUtil));
 
     possibleStates.emplace_back(
         std::make_unique<UnoWasNotCalledState>(cardsManagerDel, sharedPtrCurrentCards));
 
     possibleStates.emplace_back(
         std::make_unique<MustBuyFromTableState>(cardsManagerDel, 
-        rulesDataSource, sharedPtrCurrentCards));
+        rulesDataSource, sharedPtrCurrentCards, inputUtil));
 }
 
 std::optional<Card> Player::StartTurn(std::vector<TurnAction> turnAction)

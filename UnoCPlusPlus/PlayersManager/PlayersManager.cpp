@@ -13,7 +13,7 @@ void PlayersManager::InitializePlayers(
 	int numberOfPlayers = GetNumberOfPlayers();
 	bool randomNames = ShouldRandomizeNames();
 
-	RandomNameGenerator nameGenerator = RandomNameGenerator{};
+	RandomNameGenerator nameGenerator = RandomNameGenerator{random};
 
 	for (int i = 0; i < numberOfPlayers; i++)
 	{

@@ -1,7 +1,7 @@
 #include "DefaultState.h"
-#include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../../ActionsThatCanBeTaken/ShoutUno/ShoutUno.h"
-#include "../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
+#include "../../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
+#include "../../../ActionsThatCanBeTaken/ShoutUno/ShoutUno.h"
+#include "../../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
 
 std::optional<Card> DefaultState::PlayTurn()
 {
@@ -40,38 +40,7 @@ void DefaultState::PopulatePossibleActions()
 	}
 }
 
-void DefaultState::PrintCard(const Card& cardToPrint)
-{
-	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
-}
-
-void DefaultState::PrintActionNumber(int actionNumber)
-{
-	printf(" [%i] ", actionNumber);
-}
-
 bool DefaultState::CanPlayAnyCard()
 {
 	return PossibleActions.size() > 0;
-}
-
-std::optional<Card> DefaultState::GetPlayerAction()
-{
-	bool stackableAction = true;
-	std::optional<Card> cardToReturn = std::nullopt;
-	while (stackableAction)
-	{
-		int selection = InputActionToTake();
-		stackableAction = PossibleActions[selection]->IsStackableAction;
-		cardToReturn = PossibleActions[selection]->TakeAction();
-	}
-	return cardToReturn;
-}
-
-const int DefaultState::InputActionToTake()
-{
-	const int index = InputManager.GetIntegerInput("\n Select action to take! ",
-		0, PossibleActions.size() - 1);
-
-	return index;
 }

@@ -8,11 +8,11 @@
 #include "../RulesManager/TurnAction/TurnAction.h"
 #include "../Utilities/IInputVariables.h"
 #include "PlayerStates/IPlayerState.h"
-#include "PlayerStates/DefaultState/DefaultState.h"
+#include "PlayerStates/IBasicPlayableState/DefaultState/DefaultState.h"
 #include "PlayerStates/GotJumpedState/GotJumpedState.h"
-#include "PlayerStates/MustBuyState/MustBuyState.h"
+#include "PlayerStates/IBasicPlayableState/MustBuyState/MustBuyState.h"
 #include "PlayerStates/UnoWasNotCalledState/UnoWasNotCalledState.h"
-#include "PlayerStates/MustBuyFromTableState/MustBuyFromTableState.h"
+#include "PlayerStates/IBasicPlayableState/MustBuyFromTableState/MustBuyFromTableState.h"
 
 class Player
 {

@@ -1,13 +1,11 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../../IPlayerState.h"
-#include "../../../ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
+#include "../IBasicPlayableState.h"
 #include "../../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
 #include "../../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
-#include "../../../../Utilities/IInputVariables.h"
 
-class DefaultState : public IPlayerState
+class DefaultState : public IBasicPlayableState
 {
 private:
 	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
@@ -16,14 +14,8 @@ private:
 	std::shared_ptr<std::vector<Card>> CurrentCards;
 	std::shared_ptr<bool> HasCalledUno;
 
-	IInputVariables& InputManager;
-
 	void PopulatePossibleActions();
-	void PrintCard(const Card& cardToPrint);
-	void PrintActionNumber(int actionNumber);
 	bool CanPlayAnyCard();
-	std::optional<Card> GetPlayerAction();
-	const int InputActionToTake();
 
 public:
 	DefaultState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
@@ -35,7 +27,7 @@ public:
 		RulesDataSource{ rulesDataSource },
 		CurrentCards{ currentCards },
 		HasCalledUno{ hasCalledUno },
-		InputManager{ inputManager }
+		IBasicPlayableState{ inputManager }
 	{};
 
 	std::optional<Card> PlayTurn() override;

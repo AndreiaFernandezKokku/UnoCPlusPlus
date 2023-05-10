@@ -128,11 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\BasicPlayerState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.cpp" />
     <ClCompile Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.cpp" />
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\MustBuyFromTableState\MustBuyFromTableState.cpp" />
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\MustBuyState\MustBuyState.cpp" />
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\DefaultState\DefaultState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.cpp" />
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.cpp" />
@@ -157,15 +157,15 @@
     <ClCompile Include="Utilities\ConcreteClasses\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\BasicPlayerState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.h" />
     <ClInclude Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h" />
     <ClInclude Include="Cards\ICardsManagerDelegate\ICardsManagerDelegate.h" />
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\MustBuyFromTableState\MustBuyFromTableState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\DefaultTurnState\DefaultTurnState.h" />
     <ClInclude Include="PlayersManager\IPlayersManagerDataSource\IPlayersManagerDataSource.h" />
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\MustBuyState\MustBuyState.h" />
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\DefaultState\DefaultState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.h" />
     <ClInclude Include="Player\PlayerStates\GotJumpedState\GotJumpedState.h" />
     <ClInclude Include="Player\PlayerStates\IPlayerState.h" />
     <ClInclude Include="RulesManager\IRulesForPlayerDataSource\IRulesForPlayerDataSource.h" />

@@ -1,7 +1,7 @@
 #include "MustBuyFromTableState.h"
-#include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../../../Utilities/IInputVariables.h"
-#include "../../ActionsThatCanBeTaken/BuyFromTableCard/BuyFromTableCard.h"
+#include "../../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
+#include "../../../../Utilities/IInputVariables.h"
+#include "../../../ActionsThatCanBeTaken/BuyFromTableCard/BuyFromTableCard.h"
 
 std::optional<Card> MustBuyFromTableState::PlayTurn()
 {
@@ -25,31 +25,12 @@ std::optional<Card> MustBuyFromTableState::PlayTurn()
 			CurrentCards, numOfCardsToBuy));
 	}
 
-	return PossibleActions[InputActionToTake()]->TakeAction();;
-}
-
-void MustBuyFromTableState::PrintCard(const Card& cardToPrint)
-{
-	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
-}
-
-void MustBuyFromTableState::PrintActionNumber(int actionNumber)
-{
-	printf(" [%i] ", actionNumber);
+	return GetPlayerAction();
 }
 
 bool MustBuyFromTableState::CanPlayAnyCard()
 {
 	return PossibleActions.size() > 0;
-}
-
-const int MustBuyFromTableState::InputActionToTake()
-{
-	InputVariablesManager inputManager = InputVariablesManager();
-	const int index = inputManager.GetIntegerInput("\n Select action to take! ",
-		0, PossibleActions.size() - 1);
-
-	return index;
 }
 
 

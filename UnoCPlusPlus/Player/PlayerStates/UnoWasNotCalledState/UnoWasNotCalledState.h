@@ -1,13 +1,13 @@
 #pragma once
 #include "../IPlayerState.h"
-#include <vector>
 #include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
 class UnoWasNotCalledState : public IPlayerState
 {
-public:
+private:
 	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
 	std::shared_ptr<std::vector<Card>> CurrentCards;
+	const int NUMBER_OF_CARDS_TO_BUY = 2;
 
 public:
 	UnoWasNotCalledState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,

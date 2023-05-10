@@ -45,10 +45,10 @@
     <ClCompile Include="Player\ActionsThatCanBeTaken\PlayCard\PlayCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\MustBuyState\MustBuyState.cpp">
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\DefaultState\DefaultState.cpp">
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp">
@@ -87,13 +87,13 @@
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\MustBuyFromTableState\MustBuyFromTableState.cpp">
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player\PlayerStates\BasicPlayerState\BasicPlayerState.cpp">
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,10 +146,10 @@
     <ClInclude Include="Cards\ICardsManagerDelegate\ICardsManagerDelegate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\MustBuyState\MustBuyState.h">
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\DefaultState\DefaultState.h">
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\PlayerStates\GotJumpedState\GotJumpedState.h">
@@ -206,7 +206,7 @@
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\MustBuyFromTableState\MustBuyFromTableState.h">
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h">
@@ -215,7 +215,7 @@
     <ClInclude Include="Utilities\IInputVariables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player\PlayerStates\BasicPlayerState\BasicPlayerState.h">
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
