@@ -1,10 +1,12 @@
 #pragma once
 #include "../ICardsManagerDelegate.h"
+#include "../../../Utilities/ConcreteClasses/Header/RandomUtility.h"
 
 class CardsManager : public ICardsManagerDelegate
 {
 	std::vector<Card> deck;
 	std::vector<Card> table;
+	RandomUtility& randomUtility;
 
 	void PopulateDeckList();
 	void ShuffleDeckList();
@@ -15,6 +17,8 @@ class CardsManager : public ICardsManagerDelegate
 public:
 	const int MIN_TABLE_CARDS = 2;
 	const int INITIAL_CARDS = 7;
+
+	CardsManager(RandomUtility& randomUtil) : randomUtility{ randomUtil } {};
 
 	void Initialize();
 

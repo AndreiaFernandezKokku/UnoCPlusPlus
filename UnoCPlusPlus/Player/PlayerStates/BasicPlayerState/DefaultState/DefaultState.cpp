@@ -2,7 +2,6 @@
 #include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
 #include "../../ActionsThatCanBeTaken/ShoutUno/ShoutUno.h"
 #include "../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
-#include "../../../Utilities/Header/InputVariablesManager.h"
 
 std::optional<Card> DefaultState::PlayTurn()
 {
@@ -71,8 +70,7 @@ std::optional<Card> DefaultState::GetPlayerAction()
 
 const int DefaultState::InputActionToTake()
 {
-	InputVariablesManager inputManager = InputVariablesManager();
-	const int index = inputManager.GetIntegerInput("\n Select action to take! ",
+	const int index = InputManager.GetIntegerInput("\n Select action to take! ",
 		0, PossibleActions.size() - 1);
 
 	return index;

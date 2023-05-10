@@ -1,7 +1,7 @@
 #include "MustBuyState.h"
 #include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
 #include "../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
-#include "../../../Utilities/Header/InputVariablesManager.h"
+#include "../../../Utilities/IInputVariables.h"
 
 std::optional<Card> MustBuyState::PlayTurn()
 {

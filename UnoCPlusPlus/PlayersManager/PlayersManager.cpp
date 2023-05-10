@@ -1,5 +1,5 @@
 #include "PlayersManager.h"
-#include "../Utilities/Header/RandomUtility.h"
+
 
 std::vector<Player>& PlayersManager::GetAllPlayers()
 {
@@ -10,9 +10,8 @@ void PlayersManager::InitializePlayers(
 	std::shared_ptr<ICardsManagerDelegate> cardsManagerDel, 
 	std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
 {
-	InputVariablesManager inputVariables = InputVariablesManager{};
-	int numberOfPlayers = GetNumberOfPlayers(inputVariables);
-	bool randomNames = ShouldRandomizeNames(inputVariables);
+	int numberOfPlayers = GetNumberOfPlayers();
+	bool randomNames = ShouldRandomizeNames();
 
 	RandomNameGenerator nameGenerator = RandomNameGenerator{};
 
@@ -27,7 +26,7 @@ void PlayersManager::InitializePlayers(
 		}
 		else
 		{
-			name = GetName(inputVariables);
+			name = GetName();
 			printf("\n");
 		}
 		CreatePlayer(name, cardsManagerDel, rulesDataSource);
@@ -35,19 +34,19 @@ void PlayersManager::InitializePlayers(
 	ShuffleAllPlayersList();
 }
 
-int PlayersManager::GetNumberOfPlayers(InputVariablesManager inputVariables)
+int PlayersManager::GetNumberOfPlayers()
 {
 	return inputVariables.GetIntegerInput("Set the number of players ",
 		MIN_NUM_OF_PLAYERS, MAX_NUM_OF_PLAYERS);
 }
 
-bool PlayersManager::ShouldRandomizeNames(InputVariablesManager inputVariables)
+bool PlayersManager::ShouldRandomizeNames()
 {
 	return static_cast<bool>(inputVariables.
 	GetIntegerInput("Should I randomize the names? 0 for no, 1 for yes ", 0, 1));
 }
 
-std::shared_ptr<std::string> PlayersManager::GetName(InputVariablesManager inputVariables)
+std::shared_ptr<std::string> PlayersManager::GetName()
 {
 	return std::make_shared<std::string>(
 			inputVariables.GetStringInput("Set player name", MIN_NUM_CHARACTERS_NAME,
@@ -64,13 +63,12 @@ void PlayersManager::CreatePlayer(std::shared_ptr<std::string> name,
 	std::shared_ptr<ICardsManagerDelegate> cardsManagerDel, 
 	std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
 {
-	AllPlayers.push_back(Player(name, cardsManagerDel, rulesDataSource));
+	AllPlayers.push_back(Player(name, cardsManagerDel, rulesDataSource, inputVariables));
 }
 
 void PlayersManager::ShuffleAllPlayersList()
 {
-	RandomUtility::ShuffleVector<std::vector<Player>>(
-		AllPlayers.begin(), AllPlayers.end());
+	random.ShuffleVector<std::vector<Player>>(AllPlayers.begin(), AllPlayers.end());
 }
 
 void PlayersManager::PrintInitialPlayers()

@@ -10,7 +10,8 @@ void Player::InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsMan
 }
 
 void Player::InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
-        std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource)
+        std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
+        IInputVariables& inputUtil)
 {
     possibleStates.emplace_back(
         std::make_unique<DefaultState>(cardsManagerDel, 

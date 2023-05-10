@@ -1,6 +1,6 @@
 #include "MustBuyFromTableState.h"
 #include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../../../Utilities/Header/InputVariablesManager.h"
+#include "../../../Utilities/IInputVariables.h"
 #include "../../ActionsThatCanBeTaken/BuyFromTableCard/BuyFromTableCard.h"
 
 std::optional<Card> MustBuyFromTableState::PlayTurn()
