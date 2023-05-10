@@ -15,6 +15,6 @@ public:
 
 	virtual const std::optional<Card> GetLastCardFromTable() = 0;
 	virtual void PlaceCardOnTable(Card cardToPlaceOnTable) = 0;
-	virtual void PrintDeckAmountOfCards() = 0;
-	virtual void PrintTableAmountOfCards() = 0;
+	virtual int PrintDeckAmountOfCards() = 0;
+	virtual int PrintTableAmountOfCards() = 0;
 };

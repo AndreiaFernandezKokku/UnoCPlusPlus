@@ -3,8 +3,6 @@
 
 class CardsManager : public ICardsManagerDelegate
 {
-	const int MIN_TABLE_CARDS = 2;
-	const int INITIAL_CARDS = 7;
 	std::vector<Card> deck;
 	std::vector<Card> table;
 
@@ -15,6 +13,9 @@ class CardsManager : public ICardsManagerDelegate
 	void SendCardsFromTableToDeck();
 
 public:
+	const int MIN_TABLE_CARDS = 2;
+	const int INITIAL_CARDS = 7;
+
 	void Initialize();
 
 	void PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace) override;
@@ -26,7 +27,7 @@ public:
 
 	const std::optional<Card> GetLastCardFromTable() override;
 	void PlaceCardOnTable(Card cardToPlaceOnTable) override;
-	void PrintDeckAmountOfCards() override;
-	void PrintTableAmountOfCards() override;
+	int PrintDeckAmountOfCards() override;
+	int PrintTableAmountOfCards() override;
 };
 

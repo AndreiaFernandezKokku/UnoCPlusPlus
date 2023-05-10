@@ -132,12 +132,14 @@ void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
 	table.push_back(cardToPlaceOnTable);
 }
 
-void CardsManager::PrintDeckAmountOfCards()
+int CardsManager::PrintDeckAmountOfCards()
 {
 	printf("Deck amount of cards is: %i \n", static_cast<int>(deck.size()));
+	return deck.size();
 }
 
-void CardsManager::PrintTableAmountOfCards()
+int CardsManager::PrintTableAmountOfCards()
 {
 	printf("Table amount of cards is: %i \n", static_cast<int>(table.size()));
+	return table.size();
 }

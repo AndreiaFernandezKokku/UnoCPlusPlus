@@ -17,7 +17,7 @@ namespace UnoUnitTest
 			Importer cardImporter = Importer{};
 			int actualNumberOfCards = 
 				static_cast<int>(cardImporter.GetAllCards().size());
-			Assert::AreEqual(actualNumberOfCards, expectedNumberOfCards);
+			Assert::AreEqual(expectedNumberOfCards, actualNumberOfCards);
 		}
 	};
 }

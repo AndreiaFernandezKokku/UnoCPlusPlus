@@ -69,8 +69,8 @@ void PlayersManager::CreatePlayer(std::shared_ptr<std::string> name,
 
 void PlayersManager::ShuffleAllPlayersList()
 {
-	RandomUtility random = RandomUtility{};
-	random.ShuffleVector<std::vector<Player>>(AllPlayers.begin(), AllPlayers.end());
+	RandomUtility::ShuffleVector<std::vector<Player>>(
+		AllPlayers.begin(), AllPlayers.end());
 }
 
 void PlayersManager::PrintInitialPlayers()
