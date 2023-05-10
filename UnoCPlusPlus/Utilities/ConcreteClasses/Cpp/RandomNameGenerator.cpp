@@ -1,6 +1,11 @@
 ﻿#include "../Header/RandomNameGenerator.h"
 #include <cassert>
 
+_stringVector RandomNameGenerator::GetAllNames()
+{
+	return AllNames;
+}
+
 const std::string RandomNameGenerator::CompleteRandomName()
 {
 	assert(AllNames.size() > 0,

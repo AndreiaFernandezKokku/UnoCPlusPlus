@@ -10,7 +10,9 @@ namespace UnoUnitTest
 	TEST_CLASS(CardsManagerTest)
 	{
 		//todo, maybe test the table sending cards to deck.
-		CardsManager cm = CardsManager{};
+		//todo, maybe test the randoms
+		RandomUtility random = RandomUtility{};
+		CardsManager cm = CardsManager{ random };
 		int totalNumberOfCards = Importer{}.GetAllCards().size();
 
 	public:

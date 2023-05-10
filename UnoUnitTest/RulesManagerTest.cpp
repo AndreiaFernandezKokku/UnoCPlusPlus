@@ -7,9 +7,25 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnoUnitTest
 {
+	class FakeInput : public IInputVariables
+	{
+		// Red on enum == 2
+	public:
+		int GetIntegerInput(std::string stringRequest, int minSize, int maxSize) 
+		{ 
+			return 2; 
+		}
+		std::string GetStringInput(std::string stringRequest, int minSize, int maxSize)
+		{
+			return "";
+		}
+		~FakeInput() = default;
+	};
+
 	TEST_CLASS(RulesManagerTest)
 	{
-		RulesManager rm = RulesManager{};
+		FakeInput fakeInput = FakeInput{};
+		RulesManager rm = RulesManager{ fakeInput };
 	public:
 		TEST_METHOD(CommonCardBehaviour)
 		{
@@ -121,15 +137,7 @@ namespace UnoUnitTest
 			Card plusTwo = Card(Color::Blue, CardAction::PlusTwo);
 			Card anyColor = Card(Color::Any, CardAction::Two);
 
-			// Red on enum == 2
-			// Temporarily redirect cin to string stream to allow control of input.
-			std::istringstream sin{ "2" };
-			auto cin_rdbuf = std::cin.rdbuf(sin.rdbuf());
-
 			rm.NewCardOnTable(anyPlusFourCard);
-
-			// Reset cin to normal.
-			std::cin.rdbuf(cin_rdbuf);
 
 			TurnActionShouldContain(TurnAction::BuyMultipleCard);
 			Assert::AreEqual(4, static_cast<int>(rm.GetNumberOfDeckCardsToBeBought()));

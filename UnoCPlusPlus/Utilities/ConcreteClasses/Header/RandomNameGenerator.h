@@ -5,16 +5,16 @@
 #include "RandomUtility.h"
 
 using _string = std::string;
-using _vectorToString = std::vector<_string>;
+using _stringVector = std::vector<_string>;
 
 class RandomNameGenerator
 {
 private:
-	_vectorToString AllNames;
+	_stringVector AllNames;
 	RandomUtility& RandomUtil;
 
 public:
-	RandomNameGenerator(RandomUtility& randomUtil) : RandomUtil{ randomUtil } 
+	RandomNameGenerator(RandomUtility& randomUtil) : RandomUtil{ randomUtil }
 	{
 		AllNames = { "Gotama","Telesphoros","Tangaroa","Avilius","Wodan",
 			"Radhika","Albertus","Chandrashekhar","Lalita","Abhishek","Viator",
@@ -22,6 +22,7 @@ public:
 			"Helga","Traianus" };
 	};
 
+	_stringVector GetAllNames();
 	const std::string CompleteRandomName();
 };
 
