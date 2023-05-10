@@ -166,6 +166,7 @@
     </ClCompile>
     <ClCompile Include="CardsManagerTest.cpp" />
     <ClCompile Include="ImporterTest.cpp" />
+    <ClCompile Include="RulesManagerTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
