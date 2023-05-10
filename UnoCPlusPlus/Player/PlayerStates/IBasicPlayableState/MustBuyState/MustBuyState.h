@@ -1,12 +1,9 @@
 #pragma once
-#include <vector>
-#include <memory>
-#include "../IPlayerState.h"
-#include "../../ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
-#include "../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
-#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
+#include "../IBasicPlayableState.h"
+#include "../../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "../../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
-class MustBuyState : public IPlayerState
+class MustBuyState : public IBasicPlayableState
 {
 private:
 	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
@@ -14,18 +11,17 @@ private:
 
 	std::shared_ptr<std::vector<Card>> CurrentCards;
 
-	void PrintCard(const Card& cardToPrint);
-	void PrintActionNumber(int actionNumber);
 	bool CanPlayAnyCard();
-	const int InputActionToTake();
 
 public:
 	MustBuyState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
 		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
-		std::shared_ptr<std::vector<Card>> currentCards) :
+		std::shared_ptr<std::vector<Card>> currentCards,
+		IInputVariables& inputManager) :
 		CardsManagerDel{ cardsManagerDel },
 		RulesDataSource{ rulesDataSource },
-		CurrentCards{ currentCards }
+		CurrentCards{ currentCards },
+		IBasicPlayableState{ inputManager }
 	{};
 
 	std::optional<Card> PlayTurn() override;

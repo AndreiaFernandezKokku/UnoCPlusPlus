@@ -2,7 +2,7 @@
 #include <cassert>
 
 
-RulesManager::RulesManager()
+RulesManager::RulesManager(IInputVariables& inputUtil)
 {
 	turnStates.emplace_back(std::make_unique<FirstTurnState>());
 	turnStates.emplace_back(std::make_unique<DefaultTurnState>());
@@ -11,7 +11,7 @@ RulesManager::RulesManager()
 	turnStates.emplace_back(
 		std::make_unique<PlusTwoCardsState>(&numberOfDeckCardsThatStacked));
 	turnStates.emplace_back(
-		std::make_unique<PlusFourCardsState>(&numberOfDeckCardsThatStacked));
+		std::make_unique<PlusFourCardsState>(&numberOfDeckCardsThatStacked, inputUtil));
 	turnStates.emplace_back(
 		std::make_unique<PlusTwoDiscardState>(&numberOfTableCardsThatStacked));
 	currentStateClassIndex = SelectStateClassIndex<FirstTurnState>();

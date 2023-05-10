@@ -121,9 +121,8 @@ namespace UnoUnitTest
 			Card plusTwo = Card(Color::Blue, CardAction::PlusTwo);
 			Card anyColor = Card(Color::Any, CardAction::Two);
 
-			//Red on enum == 2
-			// Temporarily redirect cin to string streams
-			// to allow control of input and observation of output.
+			// Red on enum == 2
+			// Temporarily redirect cin to string stream to allow control of input.
 			std::istringstream sin{ "2" };
 			auto cin_rdbuf = std::cin.rdbuf(sin.rdbuf());
 

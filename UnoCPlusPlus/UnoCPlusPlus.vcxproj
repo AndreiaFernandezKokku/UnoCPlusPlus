@@ -128,10 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.cpp" />
     <ClCompile Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.cpp" />
-    <ClCompile Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.cpp" />
-    <ClCompile Include="Player\PlayerStates\MustBuyState\MustBuyState.cpp" />
-    <ClCompile Include="Player\PlayerStates\DefaultState\DefaultState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.cpp" />
+    <ClCompile Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.cpp" />
     <ClCompile Include="Player\PlayerStates\GotJumpedState\GotJumpedState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.cpp" />
     <ClCompile Include="RulesManager\RulesManagerStates\BasicTurnState\PlusFourCardsState\PlusFourCardsState.cpp" />
@@ -151,19 +152,20 @@
     <ClCompile Include="TurnManager\TurnManager.cpp" />
     <ClCompile Include="UnoCPlusPlus.cpp" />
     <ClCompile Include="Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.cpp" />
-    <ClCompile Include="Utilities\Cpp\InputVariablesManager.cpp" />
-    <ClCompile Include="Utilities\Cpp\RandomNameGenerator.cpp" />
-    <ClCompile Include="Utilities\Cpp\RandomUtility.cpp" />
+    <ClCompile Include="Utilities\ConcreteClasses\Cpp\InputVariablesManager.cpp" />
+    <ClCompile Include="Utilities\ConcreteClasses\Cpp\RandomNameGenerator.cpp" />
+    <ClCompile Include="Utilities\ConcreteClasses\Cpp\RandomUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\IBasicPlayableState.h" />
     <ClInclude Include="Player\ActionsThatCanBeTaken\BuyFromTableCard\BuyFromTableCard.h" />
     <ClInclude Include="Cards\ICardsManagerDelegate\ICardsManagerDelegate.h" />
-    <ClInclude Include="Player\PlayerStates\MustBuyFromTableState\MustBuyFromTableState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyFromTableState\MustBuyFromTableState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\PlusTwoDiscardState\PlusTwoDiscardState.h" />
     <ClInclude Include="RulesManager\RulesManagerStates\BasicTurnState\DefaultTurnState\DefaultTurnState.h" />
     <ClInclude Include="PlayersManager\IPlayersManagerDataSource\IPlayersManagerDataSource.h" />
-    <ClInclude Include="Player\PlayerStates\MustBuyState\MustBuyState.h" />
-    <ClInclude Include="Player\PlayerStates\DefaultState\DefaultState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\MustBuyState\MustBuyState.h" />
+    <ClInclude Include="Player\PlayerStates\IBasicPlayableState\DefaultState\DefaultState.h" />
     <ClInclude Include="Player\PlayerStates\GotJumpedState\GotJumpedState.h" />
     <ClInclude Include="Player\PlayerStates\IPlayerState.h" />
     <ClInclude Include="RulesManager\IRulesForPlayerDataSource\IRulesForPlayerDataSource.h" />
@@ -190,10 +192,11 @@
     <ClInclude Include="Player\ActionsThatCanBeTaken\ShoutUno\ShoutUno.h" />
     <ClInclude Include="TurnManager\TurnManager.h" />
     <ClInclude Include="Player\PlayerStates\UnoWasNotCalledState\UnoWasNotCalledState.h" />
-    <ClInclude Include="Utilities\Header\FloatComparer.h" />
-    <ClInclude Include="Utilities\Header\InputVariablesManager.h" />
-    <ClInclude Include="Utilities\Header\RandomNameGenerator.h" />
-    <ClInclude Include="Utilities\Header\RandomUtility.h" />
+    <ClInclude Include="Utilities\ConcreteClasses\Header\FloatComparer.h" />
+    <ClInclude Include="Utilities\ConcreteClasses\Header\InputVariablesManager.h" />
+    <ClInclude Include="Utilities\ConcreteClasses\Header\RandomNameGenerator.h" />
+    <ClInclude Include="Utilities\ConcreteClasses\Header\RandomUtility.h" />
+    <ClInclude Include="Utilities\IInputVariables.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

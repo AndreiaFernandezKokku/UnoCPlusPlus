@@ -1,6 +1,5 @@
 #include "CardsManager.h"
 #include "../../Importer/Importer.h"
-#include "../../../Utilities/Header/RandomUtility.h"
 #include <cassert>
 
 void CardsManager::Initialize()
@@ -18,7 +17,7 @@ void CardsManager::PopulateDeckList()
 
 void CardsManager::ShuffleDeckList()
 {
-	RandomUtility::ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
+	randomUtility.ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
 }
 
 void CardsManager::PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace)
@@ -56,7 +55,7 @@ void CardsManager::PlaceAmountOfCardsFromTableInVector(std::vector<Card>& vector
 	{
 		for (int i = 0; i < amount; i++)
 		{
-			int cardIndex = RandomUtility::RandRange(0, table.size() - MIN_TABLE_CARDS);
+			int cardIndex = randomUtility.RandRange(0, table.size() - MIN_TABLE_CARDS);
 			vectorToPlace.push_back(table[cardIndex]);
 			table.erase(table.begin() + cardIndex);
 		}
