@@ -9,7 +9,7 @@ namespace UnoUnitTest
 {
 	TEST_CLASS(CardsManagerTest)
 	{
-		//todo, test random
+		//todo, maybe test the table sending cards to deck.
 		CardsManager cm = CardsManager{};
 		int totalNumberOfCards = Importer{}.GetAllCards().size();
 
@@ -44,12 +44,11 @@ namespace UnoUnitTest
 
 		TEST_METHOD(CardPlacementFromTable)
 		{
+			cm.Initialize();
 
-		}
+			NotEnoughTableCardsToSend();
 
-		TEST_METHOD(SendCardsFromTableToDeck)
-		{
-
+			EnoughTableCardsToSend();
 		}
 
 		void InitialCardPlacement(std::vector<Card>& cardVectorToTest)
@@ -103,12 +102,61 @@ namespace UnoUnitTest
 			Card expectedCard = intermediateCardVector.back();
 			cm.PlaceCardOnTable(intermediateCardVector.back());
 
+			intermediateCardVector.pop_back();
+
 			Assert::AreEqual(1, cm.PrintTableAmountOfCards());
 
 			Card actualCard = cm.GetLastCardFromTable().value();
 
 			Assert::AreEqual(Card::CardDataString(expectedCard),
 				Card::CardDataString(actualCard));
+		}
+
+		void NotEnoughTableCardsToSend()
+		{
+			std::vector<Card> intermediateVector;
+			int expectedIntermediateVectorSize = 1;
+
+			int expectedDeckCardsAmount = cm.PrintDeckAmountOfCards() - 
+				expectedIntermediateVectorSize;
+
+			cm.PlaceAmountOfCardsFromTableInVector(intermediateVector, 1);
+
+			Assert::AreEqual(expectedIntermediateVectorSize, 
+				static_cast<int>(intermediateVector.size()));
+
+			//Since table had no cards, the cardManager used deck cards.
+			Assert::AreEqual(expectedDeckCardsAmount, cm.PrintDeckAmountOfCards());
+		}
+
+		void EnoughTableCardsToSend()
+		{
+			std::vector<Card> intermediateVector;
+
+			int minimalTableCardsAmountForTest = cm.MIN_TABLE_CARDS + 1;
+
+			//Making table size big enough
+			while (minimalTableCardsAmountForTest > cm.PrintTableAmountOfCards())
+			{
+				cm.PlaceOneCardFromDeckInVector(intermediateVector);
+				cm.PlaceCardOnTable(intermediateVector.back());
+				intermediateVector.pop_back();
+			}
+
+			int currentTableSize = cm.PrintTableAmountOfCards();
+			int expectedDeckSize = cm.PrintDeckAmountOfCards();
+
+			std::vector<Card> vectorToPlaceTableCard;
+			cm.PlaceAmountOfCardsFromTableInVector(vectorToPlaceTableCard, 1);
+
+			Assert::AreEqual(1, static_cast<int>(vectorToPlaceTableCard.size()));
+
+			//One card was removed, so its size should be -1
+			Assert::AreEqual(currentTableSize - 1, cm.PrintTableAmountOfCards());
+
+			//Should not have been removed from deck
+			Assert::AreEqual(expectedDeckSize,
+				static_cast<int>(cm.PrintDeckAmountOfCards()));
 		}
 	};
 }

@@ -100,7 +100,7 @@ bool CardsManager::DoesDeckHaveEnoughCardsToSend(int amountToSend)
 
 bool CardsManager::DoesTableHaveEnoughCardsToSend(int amountToSend)
 {
-	if (table.size() <= (amountToSend + MIN_TABLE_CARDS))
+	if (table.size() < (amountToSend + MIN_TABLE_CARDS))
 	{
 		printf("Not enough table cards to send. \n");
 		return false;
