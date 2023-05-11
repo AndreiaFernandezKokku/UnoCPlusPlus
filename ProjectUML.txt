@@ -1,0 +1,219 @@
+@startuml
+package "MainProgram" {
+class RandomUtility{
+    -Seed
+    +int RandRange(...)
+    +void ShuffleVector(...)
+}
+package "InputVariablesManagerPackage"{
+	class InputVariablesManager
+
+	interface IInputVariables{
+		+int GetIntegerInput(...)
+		+std::string GetStringInput(...)
+	}
+	InputVariablesManager <|-- IInputVariables
+}
+
+package "CardsManagerPackage"{
+	class CardsManager{
+		-std::vector<Card> deck
+		-std::vector<Card> table
+
+		+const int MIN_TABLE_CARDS = 2
+		+const int INITIAL_CARDS = 7
+		+CardsManager(RandomUtility&)
+		+Initialize()
+	}
+	interface ICardsManagerDelegate{
+		+void PlaceInitialCardsInVector(...)
+		+void PlaceOneCardFromDeckInVector(...)
+		+void PlaceAmountOfCardsFromDeckInVector(...)
+		+void PlaceAmountOfCardsFromTableInVector(...)
+	
+		+const std::optional<Card> GetLastCardFromTable(...)
+		+void PlaceCardOnTable(...)
+		+int PrintDeckAmountOfCards()
+		+int PrintTableAmountOfCards()
+	}
+	CardsManager <|-- ICardsManagerDelegate
+	CardsManager <-- RandomUtility
+}
+
+package "RulesManagerPackage"{
+	class RulesManager{
+		-std::vector<std::unique_ptr<IRulesState>> turnStates
+		-int currentStateClassIndex
+		-int numberOfDeckCardsThatStacked
+		-int numberOfTableCardsThatStacked
+	
+		+RulesManager(IInputVariables&);
+	}
+	
+	RulesManager <-- IInputVariables
+
+	
+	interface IRulesForTurnDelegate{
+		+void NewCardOnTable(...)
+		+void NoNewCardOnTable()
+		+const std::vector<TurnAction> GetCurrentTurnActionsAvailable() 
+	}
+
+	interface IRulesForPlayerDataSource{
+		+bool CanCardBePlayed(...)
+		+int GetNumberOfDeckCardsToBeBought()
+		+int GetNumberOfTableCardsToBeBought()
+	}
+	package "RulesStateMachine"{
+		interface IRulesState{
+			+std::vector<TurnAction> GetCurrentTurnActionsAvailable()
+			+void NewCardOnTable(Card currentTableCard)
+			+void NoNewCardOnTable()
+			+bool CanCardBePlayed(...)
+		}
+		class BasicTurnState{
+			#std::vector<Color> ColorsThatCanBePlayed;
+			#std::vector<CardAction> CardActThatCanBePlayed;
+			#std::vector<TurnAction> ActionsToTake;
+			
+			#bool HasPlayableColor(...);
+			#bool HasPlayableAction(...);
+			#void UpdateCurrentColorThatCanBePlayed(...);
+			#void AddAllColors();
+			#void UpdateCurrentActionThatCanBePlayed(...);
+			#void ClearAllCurrentVariables();
+		}
+		class DefaultTurnState
+		class FirstTurnState
+		class JumpTurnState{
+			-Color colorForNextTurn
+		}
+		class PlusFourCardsState{
+			-int* NumberOfStackedCards;
+			-Color CurrentColor;
+			-IInputVariables& InputManager;
+			+PlusFourCardsState(...IInputVariables)
+		}
+		class PlusTwoCardsState{
+			-int* NumberOfStackedCards;
+			-Color CurrentColor;
+		}
+		class PlusTwoDiscardState{
+			-int* NumberOfStackedDiscardCards;
+			-Color CurrentColor;
+		}
+		class ReverseTurnState
+		
+		BasicTurnState <|-- IRulesState
+		DefaultTurnState <|-- BasicTurnState
+		FirstTurnState <|-- BasicTurnState
+		JumpTurnState <|-- BasicTurnState
+		PlusFourCardsState <|-- BasicTurnState
+		IInputVariables .. PlusFourCardsState
+		PlusTwoCardsState <|-- BasicTurnState
+		PlusTwoDiscardState <|-- BasicTurnState
+		ReverseTurnState <|-- BasicTurnState
+	}
+	RulesManager *-- IRulesState : contains>
+	RulesManager <|-- IRulesForTurnDelegate
+	RulesManager <|-- IRulesForPlayerDataSource
+}
+
+package "PlayersPackage"{
+	class PlayersManager{
+		-const int MIN_NUM_OF_PLAYERS = 2
+		-const int MAX_NUM_OF_PLAYERS = 10
+		-const int MIN_NUM_CHARACTERS_NAME = 3
+		-const int MAX_NUM_CHARACTERS_NAME = 10
+		-std::vector<Player> AllPlayers
+		+PlayersManager(...)
+		+void InitializePlayers(...)
+		+void ShuffleAllPlayersList()
+		+void PrintInitialPlayers()
+	}
+	interface IPlayersManagerDataSource{
+		+std::vector<Player>& GetAllPlayers()
+	}
+	PlayersManager <|-- IPlayersManagerDataSource
+	PlayersManager <-- RandomUtility
+	PlayersManager <-- IInputVariables
+	PlayersManager <-- ICardsManagerDelegate
+	PlayersManager <-- IRulesForPlayerDataSource
+	
+	package "PlayerPackage"{
+		class Player{
+			-std::shared_ptr<std::vector<Card>> sharedPtrCurrentCards
+			-std::shared_ptr<std::string> name
+			-std::vector<std::unique_ptr<IPlayerState>> possibleStates
+			-std::shared_ptr<bool> unoWasCalledOutPtr
+			+Player(...)
+			 InitializeVariables(...)
+			 InitializeStates(...)
+			+std::optional<Card> StartTurn(std::vector<TurnAction>)
+			+const char* GetName()
+			+const int GetCurrentCardsSize()
+			+void PrintCurrentCards()
+		}
+		
+		package "PlayerStateMachine"{
+			interface IPlayerState{
+				#std::vector<std::unique_ptr<IPlayerActionsThatCanBeTaken>> PossibleActions
+				+std::optional<Card> PlayTurn()
+			}
+			
+			Player *-- IPlayerState: contains
+			
+			class GotJumpedState
+			class UnoWasNotCalledState{
+				-const int NUMBER_OF_CARDS_TO_BUY = 2
+			}
+			
+			GotJumpedState <|-- IPlayerState
+			UnoWasNotCalledState <|-- IPlayerState
+			
+			interface IBasicPlayableState{
+				#void PrintCard(...)
+				#void PrintActionNumber(...)
+				#std::optional<Card> GetPlayerAction()
+				#const int InputActionToTake()
+				+IBasicPlayableState(IInputVariables& inputManager)
+			}
+			
+			IBasicPlayableState <|-- IPlayerState
+			IBasicPlayableState .. IInputVariables
+			
+			class DefaultState
+			DefaultState <|-- IBasicPlayableState
+			DefaultState .. ICardsManagerDelegate
+			DefaultState .. IRulesForPlayerDataSource
+			
+			class MustBuyFromTableState
+			MustBuyFromTableState <|-- IBasicPlayableState
+			MustBuyFromTableState .. ICardsManagerDelegate
+			MustBuyFromTableState .. IRulesForPlayerDataSource
+			
+			class MustBuyState
+			MustBuyState <|-- IBasicPlayableState
+			MustBuyState .. ICardsManagerDelegate
+			MustBuyState .. IRulesForPlayerDataSource
+		}
+
+	}
+	PlayersManager *-- Player
+}
+
+class TurnManager{
+	-std::shared_ptr<IPlayersManagerDataSource> playersManagerDataSource
+	-std::shared_ptr<ICardsManagerDelegate> cardsManagerDel
+	-std::shared_ptr<IRulesForTurnDelegate> rulesManagerDel
+	+TurnManager(...)
+	+void SetupForFirstTurn();
+	+void StartTurns();
+}
+TurnManager <-- IPlayersManagerDataSource
+TurnManager <-- ICardsManagerDelegate
+TurnManager <-- IRulesForTurnDelegate
+
+}
+
+@enduml
