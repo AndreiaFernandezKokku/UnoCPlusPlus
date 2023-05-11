@@ -2,6 +2,8 @@
 This project contains two of the extra features: +4 card and +2 discard card.
 Adding an extra feature should be as simple as adding a new state to the RulesManager or to the PlayersManager.
 
+This project also contains a set of unit tests!
+
 The Main function will initialize the most important classes 
 ### Utils
   - RandomUtility
