@@ -9,8 +9,8 @@ namespace UnoUnitTest
 {
 	TEST_CLASS(RulesManagerTest)
 	{
-		// Red on enum == 2
-		InputVariablesManagerMocked fakeInput = InputVariablesManagerMocked{2};
+		InputVariablesManagerMocked fakeInput = 
+			InputVariablesManagerMocked{static_cast<int>(Color::Red)};
 		RulesManager rm = RulesManager{ fakeInput };
 	public:
 		TEST_METHOD(CommonCardBehaviour)
