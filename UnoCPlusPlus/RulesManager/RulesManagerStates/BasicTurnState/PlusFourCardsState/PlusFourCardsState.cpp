@@ -1,5 +1,4 @@
 #include "PlusFourCardsState.h"
-#include "../../../../Utilities/Header/InputVariablesManager.h"
 
 void PlusFourCardsState::NewCardOnTable(Card currentTableCard)
 {
@@ -21,7 +20,6 @@ void PlusFourCardsState::NoNewCardOnTable()
 
 Color PlusFourCardsState::SelectColor()
 {
-	InputVariablesManager manager = InputVariablesManager();
 	printf("Select next card color \n");
 
 	//Since Count = last, and any = last -1, we need the last color
@@ -32,7 +30,7 @@ Color PlusFourCardsState::SelectColor()
 	{
 		printf("%s [%i] \n", ColorToString[i], i);
 	}
-	int input = manager.GetIntegerInput("", 0, lastColor);
+	int input = InputManager.GetIntegerInput("", 0, lastColor);
 	
 	return Color(input);
 }

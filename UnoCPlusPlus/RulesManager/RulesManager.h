@@ -4,6 +4,7 @@
 #include <vector>
 #include "IRulesForTurnDelegate/IRulesForTurnDelegate.h"
 #include "IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "../Utilities/IInputVariables.h"
 #include "RulesManagerStates/IRulesState.h"
 #include "RulesManagerStates/BasicTurnState/DefaultTurnState/DefaultTurnState.h"
 #include "RulesManagerStates/BasicTurnState/FirstTurnState/FirstTurnState.h"
@@ -16,9 +17,9 @@
 class RulesManager : public IRulesForTurnDelegate, public IRulesForPlayerDataSource
 {
 private:
-	int numberOfDeckCardsThatStacked = 0;
 	std::vector<std::unique_ptr<IRulesState>> turnStates;
 	int currentStateClassIndex = 0;
+	int numberOfDeckCardsThatStacked = 0;
 	int numberOfTableCardsThatStacked = 0;
 
 	int GetNewStateIndex(const CardAction& currentCardAction);
@@ -39,7 +40,7 @@ private:
 	void AssertNumberOfTableCardsStackedIsZero();
 
 public:
-	RulesManager();
+	RulesManager(IInputVariables& inputUtil);
 
 	//IRulesForTurnManagerDelegate
 	void NewCardOnTable(const Card& currentTableCard) override;

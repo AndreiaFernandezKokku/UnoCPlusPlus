@@ -1,7 +1,6 @@
 #include "MustBuyState.h"
-#include "../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
-#include "../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
-#include "../../../Utilities/Header/InputVariablesManager.h"
+#include "../../../ActionsThatCanBeTaken/PlayCard/PlayCard.h"
+#include "../../../ActionsThatCanBeTaken/BuyCard/BuyCard.h"
 
 std::optional<Card> MustBuyState::PlayTurn()
 {
@@ -24,29 +23,10 @@ std::optional<Card> MustBuyState::PlayTurn()
 			std::make_unique<BuyCard>(CardsManagerDel, CurrentCards, numOfCardsToBuy));
 	}
 
-	return PossibleActions[InputActionToTake()]->TakeAction();;
-}
-
-void MustBuyState::PrintCard(const Card & cardToPrint)
-{
-	printf("\n%s", Card::CardDataString(cardToPrint).c_str());
-}
-
-void MustBuyState::PrintActionNumber(int actionNumber)
-{
-	printf(" [%i] ", actionNumber);
+	return GetPlayerAction();
 }
 
 bool MustBuyState::CanPlayAnyCard()
 {
 	return PossibleActions.size() > 0;
-}
-
-const int MustBuyState::InputActionToTake()
-{
-	InputVariablesManager inputManager = InputVariablesManager();
-	const int index = inputManager.GetIntegerInput("\n Select action to take! ",
-		0, PossibleActions.size() - 1);
-
-	return index;
 }

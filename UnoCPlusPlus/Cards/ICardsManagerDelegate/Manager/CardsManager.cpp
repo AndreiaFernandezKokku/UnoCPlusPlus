@@ -1,6 +1,5 @@
 #include "CardsManager.h"
 #include "../../Importer/Importer.h"
-#include "../../../Utilities/Header/RandomUtility.h"
 #include <cassert>
 
 void CardsManager::Initialize()
@@ -18,7 +17,7 @@ void CardsManager::PopulateDeckList()
 
 void CardsManager::ShuffleDeckList()
 {
-	RandomUtility::ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
+	randomUtility.ShuffleVector<std::vector<Card>>(deck.begin(), deck.end());
 }
 
 void CardsManager::PlaceInitialCardsInVector(std::vector<Card>& vectorToPlace)
@@ -56,7 +55,7 @@ void CardsManager::PlaceAmountOfCardsFromTableInVector(std::vector<Card>& vector
 	{
 		for (int i = 0; i < amount; i++)
 		{
-			int cardIndex = RandomUtility::RandRange(0, table.size() - MIN_TABLE_CARDS);
+			int cardIndex = randomUtility.RandRange(0, table.size() - MIN_TABLE_CARDS);
 			vectorToPlace.push_back(table[cardIndex]);
 			table.erase(table.begin() + cardIndex);
 		}
@@ -100,7 +99,7 @@ bool CardsManager::DoesDeckHaveEnoughCardsToSend(int amountToSend)
 
 bool CardsManager::DoesTableHaveEnoughCardsToSend(int amountToSend)
 {
-	if (table.size() <= (amountToSend + MIN_TABLE_CARDS))
+	if (table.size() < (amountToSend + MIN_TABLE_CARDS))
 	{
 		printf("Not enough table cards to send. \n");
 		return false;
@@ -132,12 +131,14 @@ void CardsManager::PlaceCardOnTable(Card cardToPlaceOnTable)
 	table.push_back(cardToPlaceOnTable);
 }
 
-void CardsManager::PrintDeckAmountOfCards()
+int CardsManager::PrintDeckAmountOfCards()
 {
 	printf("Deck amount of cards is: %i \n", static_cast<int>(deck.size()));
+	return deck.size();
 }
 
-void CardsManager::PrintTableAmountOfCards()
+int CardsManager::PrintTableAmountOfCards()
 {
 	printf("Table amount of cards is: %i \n", static_cast<int>(table.size()));
+	return table.size();
 }

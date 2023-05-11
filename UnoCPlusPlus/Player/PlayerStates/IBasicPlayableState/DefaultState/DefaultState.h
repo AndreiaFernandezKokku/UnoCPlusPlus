@@ -1,12 +1,11 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../IPlayerState.h"
-#include "../../ActionsThatCanBeTaken/IPlayerActionsThatCanBeTaken.h"
-#include "../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
-#include "../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
+#include "../IBasicPlayableState.h"
+#include "../../../../RulesManager/IRulesForPlayerDataSource/IRulesForPlayerDataSource.h"
+#include "../../../../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 
-class DefaultState : public IPlayerState
+class DefaultState : public IBasicPlayableState
 {
 private:
 	std::shared_ptr<ICardsManagerDelegate> CardsManagerDel;
@@ -16,21 +15,19 @@ private:
 	std::shared_ptr<bool> HasCalledUno;
 
 	void PopulatePossibleActions();
-	void PrintCard(const Card& cardToPrint);
-	void PrintActionNumber(int actionNumber);
 	bool CanPlayAnyCard();
-	std::optional<Card> GetPlayerAction();
-	const int InputActionToTake();
 
 public:
 	DefaultState(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
 		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
 		std::shared_ptr<std::vector<Card>> currentCards,
-		std::shared_ptr<bool> hasCalledUno) :
+		std::shared_ptr<bool> hasCalledUno,
+		IInputVariables& inputManager) :
 		CardsManagerDel{ cardsManagerDel },
 		RulesDataSource{ rulesDataSource },
 		CurrentCards{ currentCards },
-		HasCalledUno{ hasCalledUno }
+		HasCalledUno{ hasCalledUno },
+		IBasicPlayableState{ inputManager }
 	{};
 
 	std::optional<Card> PlayTurn() override;

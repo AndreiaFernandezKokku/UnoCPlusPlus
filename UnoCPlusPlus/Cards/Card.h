@@ -20,4 +20,13 @@ public:
 			ColorToString[static_cast<int>(card.color)],
 			CardActionToString[static_cast<int>(card.action)]);
 	}
+
+	bool operator == (const Card& card)
+	{
+		if (color == card.color && action == card.action)
+		{
+			return true;
+		}
+		return false;
+	}
 };

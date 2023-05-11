@@ -6,12 +6,13 @@
 #include "../Cards/ICardsManagerDelegate/ICardsManagerDelegate.h"
 #include "../Cards/Card.h"
 #include "../RulesManager/TurnAction/TurnAction.h"
+#include "../Utilities/IInputVariables.h"
 #include "PlayerStates/IPlayerState.h"
-#include "PlayerStates/DefaultState/DefaultState.h"
+#include "PlayerStates/IBasicPlayableState/DefaultState/DefaultState.h"
 #include "PlayerStates/GotJumpedState/GotJumpedState.h"
-#include "PlayerStates/MustBuyState/MustBuyState.h"
+#include "PlayerStates/IBasicPlayableState/MustBuyState/MustBuyState.h"
 #include "PlayerStates/UnoWasNotCalledState/UnoWasNotCalledState.h"
-#include "PlayerStates/MustBuyFromTableState/MustBuyFromTableState.h"
+#include "PlayerStates/IBasicPlayableState/MustBuyFromTableState/MustBuyFromTableState.h"
 
 class Player
 {
@@ -23,7 +24,8 @@ private:
 
 	void InitializeVariables(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel);
 	void InitializeStates(std::shared_ptr<ICardsManagerDelegate> cardsManagerDel,
-		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource);
+		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
+		IInputVariables& inputUtil);
 
 	std::unique_ptr<IPlayerState>& SelectState(std::vector<TurnAction> turnAction);
 	bool GotJumped(std::vector<TurnAction> turnAction);
@@ -45,11 +47,12 @@ private:
 public:
 	Player(std::shared_ptr<std::string> nam, 
 		std::shared_ptr<ICardsManagerDelegate> cardsManager, 
-		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource) :
+		std::shared_ptr<IRulesForPlayerDataSource> rulesDataSource,
+		IInputVariables& inputUtil) :
 		name{ nam }
 	{
 		InitializeVariables(cardsManager);
-		InitializeStates(cardsManager, rulesDataSource);
+		InitializeStates(cardsManager, rulesDataSource, inputUtil);
 	};
 
 
