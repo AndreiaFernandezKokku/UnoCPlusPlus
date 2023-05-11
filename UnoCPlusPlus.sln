@@ -7,6 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnoCPlusPlus", "UnoCPlusPlu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnoUnitTest", "UnoUnitTest\UnoUnitTest.vcxproj", "{740C960A-68AF-43F4-8C00-80BB720F76F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{523C5FF9-95B6-4794-8DC7-9D97A3F0EC96}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectUML.txt = ProjectUML.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
