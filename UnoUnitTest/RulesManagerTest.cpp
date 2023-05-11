@@ -10,7 +10,7 @@ namespace UnoUnitTest
 	TEST_CLASS(RulesManagerTest)
 	{
 		// Red on enum == 2
-		InputVariablesManagerMocked fakeInput = InputVariablesManagerMocked{2,""};
+		InputVariablesManagerMocked fakeInput = InputVariablesManagerMocked{2};
 		RulesManager rm = RulesManager{ fakeInput };
 	public:
 		TEST_METHOD(CommonCardBehaviour)
