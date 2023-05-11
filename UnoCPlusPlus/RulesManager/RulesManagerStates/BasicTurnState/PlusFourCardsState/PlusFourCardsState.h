@@ -18,8 +18,8 @@ public:
 		InputManager{ inputManager }
 	{};
 
-	void NewCardOnTable(Card currentTableCard);
-	void NoNewCardOnTable();
+	void NewCardOnTable(Card currentTableCard) override;
+	void NoNewCardOnTable() override;
 
 	//Stopping wrong delete
 	~PlusFourCardsState() = default;

@@ -1,30 +1,16 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../UnoCPlusPlus/RulesManager/RulesManager.h"
-#include <iostream>
+#include "InputVariablesManagerMock/InputVariablesManagerMocked.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnoUnitTest
 {
-	class FakeInput : public IInputVariables
-	{
-		// Red on enum == 2
-	public:
-		int GetIntegerInput(std::string stringRequest, int minSize, int maxSize) 
-		{ 
-			return 2; 
-		}
-		std::string GetStringInput(std::string stringRequest, int minSize, int maxSize)
-		{
-			return "";
-		}
-		~FakeInput() = default;
-	};
-
 	TEST_CLASS(RulesManagerTest)
 	{
-		FakeInput fakeInput = FakeInput{};
+		// Red on enum == 2
+		InputVariablesManagerMocked fakeInput = InputVariablesManagerMocked{2,""};
 		RulesManager rm = RulesManager{ fakeInput };
 	public:
 		TEST_METHOD(CommonCardBehaviour)
